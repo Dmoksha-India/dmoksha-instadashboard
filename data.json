@@ -1,0 +1,90 @@
+{
+  "meta": {
+    "source": "DMoksha_Content_SourceOfTruth.xlsx · Analysis tab",
+    "generatedAt": "2026-06-12T13:35:22Z",
+    "currency": "INR",
+    "scope": "Public — engagement & spend only. No revenue or lead data.",
+    "monthsCovered": [
+      "Apr 2026"
+    ]
+  },
+  "summary": {
+    "pieces": 4,
+    "avgCPV": 0.157581,
+    "avgCPE": 8.006635,
+    "profitable": 2,
+    "brokeEven": 0,
+    "lossMaking": 2,
+    "avgSaveShareRate": 0.0305
+  },
+  "highlights": {
+    "bestPerformer": {
+      "title": "Motorized curtain reveal",
+      "cpv": 0.083333,
+      "verdict": "Profitable"
+    },
+    "worstPerformer": {
+      "title": "Client home — Bandra",
+      "cpv": 0.25,
+      "verdict": "Loss-making"
+    }
+  },
+  "pieces": [
+    {
+      "title": "Motorized curtain reveal",
+      "format": "Reel",
+      "channel": "In-app Boost",
+      "spend": 6000.0,
+      "views": 72000.0,
+      "cpv": 0.083333,
+      "cpe": 2.307692,
+      "saveRate": 0.031,
+      "shareRate": 0.014,
+      "hookRate": 0.42,
+      "follows": 180.0,
+      "verdict": "Profitable"
+    },
+    {
+      "title": "5 fabrics for Mumbai humidity",
+      "format": "Carousel",
+      "channel": "Engagement campaign",
+      "spend": 4500.0,
+      "views": 38000.0,
+      "cpv": 0.118421,
+      "cpe": 2.368421,
+      "saveRate": 0.042,
+      "shareRate": 0.009,
+      "hookRate": null,
+      "follows": 95.0,
+      "verdict": "Profitable"
+    },
+    {
+      "title": "Client home — Bandra",
+      "format": "Post",
+      "channel": "In-app Boost",
+      "spend": 3500.0,
+      "views": 14000.0,
+      "cpv": 0.25,
+      "cpe": 13.461538,
+      "saveRate": 0.011,
+      "shareRate": 0.004,
+      "hookRate": null,
+      "follows": 18.0,
+      "verdict": "Loss-making"
+    },
+    {
+      "title": "Pelmet styling tips",
+      "format": "Reel",
+      "channel": "In-app Boost",
+      "spend": 5000.0,
+      "views": 28000.0,
+      "cpv": 0.178571,
+      "cpe": 13.888889,
+      "saveRate": 0.008,
+      "shareRate": 0.003,
+      "hookRate": 0.28,
+      "follows": 30.0,
+      "verdict": "Loss-making"
+    }
+  ]
+}
