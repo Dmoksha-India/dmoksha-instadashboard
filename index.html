@@ -9,6 +9,7 @@
   :root{
     --bg:#0f1115; --panel:#181b22; --panel2:#1f232c; --line:#2a2f3a;
     --txt:#e9ecf1; --muted:#9aa3b2; --accent:#c9a24b;
+    --eng:#5aa9e6; --trf:#c9a24b;
     --good:#34c08a; --good-bg:rgba(52,192,138,.12);
     --bad:#e2655b; --bad-bg:rgba(226,101,91,.12);
     --even:#d9b25a; --even-bg:rgba(217,178,90,.12);
@@ -18,46 +19,52 @@
     font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
     line-height:1.5;-webkit-font-smoothing:antialiased}
   .wrap{max-width:1180px;margin:0 auto;padding:32px 20px 64px}
-  header{border-bottom:1px solid var(--line);padding-bottom:20px;margin-bottom:8px}
+  header.top{border-bottom:1px solid var(--line);padding-bottom:20px;margin-bottom:8px}
   h1{margin:0 0 6px;font-size:26px;letter-spacing:.2px}
   .sub{color:var(--muted);font-size:14px}
   .scope{display:inline-block;margin-top:12px;font-size:12px;color:var(--accent);
     border:1px solid var(--accent);border-radius:999px;padding:3px 12px;opacity:.9}
   .meta{color:var(--muted);font-size:12px;margin-top:10px}
-  h2{font-size:13px;text-transform:uppercase;letter-spacing:1.2px;color:var(--muted);
-    margin:34px 0 14px;font-weight:600}
-  h2 .note{text-transform:none;letter-spacing:0;font-weight:400}
-  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
-  .card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px}
-  .card .k{font-size:12px;color:var(--muted);margin-bottom:6px}
-  .card .v{font-size:24px;font-weight:650}
-  .hl{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+
+  section.obj{margin-top:40px;border:1px solid var(--line);border-radius:16px;
+    padding:8px 20px 24px;background:rgba(255,255,255,.012)}
+  .objhead{display:flex;align-items:center;gap:12px;margin:18px 4px 6px}
+  .objhead .dot{width:12px;height:12px;border-radius:50%}
+  .objhead h2{font-size:20px;margin:0;letter-spacing:.2px;text-transform:none}
+  .objhead .tag{font-size:12px;color:var(--muted)}
+  .objhead.eng .dot{background:var(--eng)} .objhead.eng h2{color:var(--eng)}
+  .objhead.trf .dot{background:var(--trf)} .objhead.trf h2{color:var(--trf)}
+
+  .seclabel{font-size:12px;text-transform:uppercase;letter-spacing:1.2px;color:var(--muted);
+    margin:24px 0 12px;font-weight:600}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(132px,1fr));gap:10px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px}
+  .card .k{font-size:11.5px;color:var(--muted);margin-bottom:6px}
+  .card .v{font-size:21px;font-weight:650}
+  .hl{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
   @media(max-width:620px){.hl{grid-template-columns:1fr}}
-  .hlcard{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px;border-left:4px solid var(--line)}
+  .hlcard{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px;border-left:4px solid var(--line)}
   .hlcard.best{border-left-color:var(--good)}
   .hlcard.worst{border-left-color:var(--bad)}
   .hlcard .lbl{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--muted)}
-  .hlcard .ttl{font-size:18px;font-weight:650;margin:6px 0 4px}
+  .hlcard .ttl{font-size:17px;font-weight:650;margin:6px 0 4px}
   .hlcard .det{font-size:13px;color:var(--muted)}
-  /* charts */
-  .charts{display:grid;grid-template-columns:1.4fr 1fr;gap:14px}
+
+  .charts{display:grid;grid-template-columns:1.4fr 1fr;gap:12px;margin-top:6px}
   @media(max-width:780px){.charts{grid-template-columns:1fr}}
   .chartbox{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px}
   .chartbox h3{margin:0 0 12px;font-size:13px;color:var(--muted);font-weight:600}
-  .chartbox canvas{max-height:260px}
-  /* breakdown tables */
-  .bd{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-  @media(max-width:780px){.bd{grid-template-columns:1fr}}
-  /* filter bar */
-  .filters{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:14px}
+  .chartbox canvas{max-height:240px}
+
+  .filters{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:12px}
   .filters input,.filters select{background:var(--panel2);color:var(--txt);border:1px solid var(--line);
-    border-radius:8px;padding:8px 11px;font-size:13px;outline:none}
-  .filters input{min-width:200px}
+    border-radius:8px;padding:7px 11px;font-size:13px;outline:none}
+  .filters input{min-width:180px}
   .filters input::placeholder{color:var(--muted)}
   .filters .reset{cursor:pointer;color:var(--accent);background:none;border:none;font-size:13px}
   .count{color:var(--muted);font-size:12px;margin-left:auto}
   .tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--panel)}
-  table{border-collapse:collapse;width:100%;font-size:13.5px;min-width:780px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;min-width:760px}
   th,td{padding:11px 12px;text-align:right;white-space:nowrap}
   th{background:var(--panel2);color:var(--muted);font-weight:600;font-size:11.5px;
     text-transform:uppercase;letter-spacing:.6px;cursor:pointer;user-select:none}
@@ -73,15 +80,17 @@
   .b-good{color:var(--good);background:var(--good-bg)}
   .b-bad{color:var(--bad);background:var(--bad-bg)}
   .b-even{color:var(--even);background:var(--even-bg)}
+  .empty{color:var(--muted);font-size:14px;padding:20px;text-align:center;
+    border:1px dashed var(--line);border-radius:12px}
   footer{margin-top:34px;color:var(--muted);font-size:12px;text-align:center}
   .err{background:var(--bad-bg);color:var(--bad);border:1px solid var(--bad);padding:14px 16px;border-radius:10px;font-size:14px}
 </style>
 </head>
 <body>
 <div class="wrap">
-  <header>
+  <header class="top">
     <h1>D'Moksha — Instagram Content Performance</h1>
-    <div class="sub">Boosted content efficiency &amp; verdict, ranked by cost-per-view.</div>
+    <div class="sub">Boosted content efficiency &amp; verdict, split by objective.</div>
     <span class="scope">Public view · engagement &amp; spend only</span>
     <div class="meta" id="meta"></div>
   </header>
@@ -93,191 +102,145 @@ const pct  = v => v==null ? "—" : (v*100).toFixed(1)+"%";
 const inr  = v => v==null ? "—" : "₹"+Number(v).toLocaleString("en-IN",{maximumFractionDigits:0});
 const inr2 = v => v==null ? "—" : "₹"+Number(v).toFixed(2);
 const num  = v => v==null ? "—" : Number(v).toLocaleString("en-IN");
-const verdictClass = v => { const t=(v||"").toLowerCase();
-  if(t.startsWith("profit")) return "b-good";
-  if(t.startsWith("loss"))   return "b-bad"; return "b-even"; };
-const verdictColor = v => { const t=(v||"").toLowerCase();
-  if(t.startsWith("profit")) return "#34c08a";
-  if(t.startsWith("loss"))   return "#e2655b"; return "#d9b25a"; };
-
-let DATA, state={ q:"", format:"", channel:"", verdict:"", sortKey:"cpv", sortDir:1 };
+const vClass = v => { const t=(v||"").toLowerCase();
+  return t.startsWith("profit")?"b-good":t.startsWith("loss")?"b-bad":"b-even"; };
+const vColor = v => { const t=(v||"").toLowerCase();
+  return t.startsWith("profit")?"#34c08a":t.startsWith("loss")?"#e2655b":"#d9b25a"; };
+const uniq = a => [...new Set(a)].filter(Boolean);
 
 const COLS=[
-  {k:"rank",  label:"#",       l:true,  sortable:false},
-  {k:"title", label:"Content", l:true,  fmt:p=>`<span class="title-cell">${p.title}</span><div class="fmt">${p.format} · ${p.channel}</div>`},
-  {k:"spend", label:"Spend",   fmt:p=>inr(p.spend)},
-  {k:"views", label:"Views",   fmt:p=>num(p.views)},
-  {k:"cpv",   label:"CPV",     fmt:p=>inr2(p.cpv)},
-  {k:"cpe",   label:"CPE",     fmt:p=>inr2(p.cpe)},
-  {k:"saveRate", label:"Save", fmt:p=>pct(p.saveRate)},
-  {k:"shareRate",label:"Share",fmt:p=>pct(p.shareRate)},
-  {k:"hookRate", label:"Hook", fmt:p=>p.hookRate==null?"—":pct(p.hookRate)},
-  {k:"follows",  label:"Follows",fmt:p=>num(p.follows)},
-  {k:"verdict",  label:"Verdict",l:true,fmt:p=>`<span class="badge ${verdictClass(p.verdict)}">${p.verdict}</span>`},
+  {k:"rank",  label:"#",       l:true, sortable:false, fmt:(p,i)=>`<td class="rank">${i+1}</td>`},
+  {k:"title", label:"Content", l:true, fmt:p=>`<td class="l"><span class="title-cell">${p.title}</span><div class="fmt">${p.format} · ${p.channel}</div></td>`},
+  {k:"spend", label:"Spend",   fmt:p=>`<td>${inr(p.spend)}</td>`},
+  {k:"views", label:"Views",   fmt:p=>`<td>${num(p.views)}</td>`},
+  {k:"cpv",   label:"CPV",     fmt:p=>`<td>${inr2(p.cpv)}</td>`},
+  {k:"cpe",   label:"CPE",     fmt:p=>`<td>${inr2(p.cpe)}</td>`},
+  {k:"saveRate", label:"Save", fmt:p=>`<td>${pct(p.saveRate)}</td>`},
+  {k:"shareRate",label:"Share",fmt:p=>`<td>${pct(p.shareRate)}</td>`},
+  {k:"hookRate", label:"Hook", fmt:p=>`<td>${p.hookRate==null?"—":pct(p.hookRate)}</td>`},
+  {k:"follows",  label:"Follows",fmt:p=>`<td>${num(p.follows)}</td>`},
+  {k:"verdict",  label:"Verdict",l:true,fmt:p=>`<td class="l"><span class="badge ${vClass(p.verdict)}">${p.verdict}</span></td>`},
 ];
 
-function uniq(arr){ return [...new Set(arr)].filter(Boolean); }
-
-function groupStats(pieces, key){
-  const groups={};
-  pieces.forEach(p=>{ const g=p[key]||"—"; (groups[g]=groups[g]||[]).push(p); });
-  return Object.entries(groups).map(([name,items])=>{
-    const avg=(f)=>{ const v=items.map(f).filter(x=>x!=null); return v.length? v.reduce((a,b)=>a+b,0)/v.length : null; };
-    return {
-      name, count:items.length,
-      spend: items.reduce((a,b)=>a+(b.spend||0),0),
-      avgCPV: avg(p=>p.cpv), avgCPE: avg(p=>p.cpe),
-      avgSaveShare: avg(p=>(p.saveRate||0)+(p.shareRate||0)),
-    };
-  }).sort((a,b)=>(a.avgCPV??1e9)-(b.avgCPV??1e9));
+function summarize(items){
+  const withCpv=items.filter(p=>typeof p.cpv==="number");
+  const avg=f=>{ const v=items.map(f).filter(x=>x!=null); return v.length? v.reduce((a,b)=>a+b,0)/v.length:null; };
+  const count=v=>items.filter(p=>(p.verdict||"")===v).length;
+  return {
+    pieces:items.length, spend:items.reduce((a,b)=>a+(b.spend||0),0),
+    avgCPV:avg(p=>p.cpv), avgCPE:avg(p=>p.cpe),
+    avgSaveShare:avg(p=>(p.saveRate||0)+(p.shareRate||0)),
+    profitable:count("Profitable"), brokeEven:count("Broke even"), lossMaking:count("Loss-making"),
+    best: withCpv.length? withCpv.reduce((a,b)=>a.cpv<b.cpv?a:b):null,
+    worst:withCpv.length? withCpv.reduce((a,b)=>a.cpv>b.cpv?a:b):null,
+  };
 }
 
-function breakdownTable(title, key){
-  const rows=groupStats(DATA.pieces,key).map(g=>`
-    <tr><td class="l title-cell">${g.name}</td><td>${g.count}</td>
-    <td>${inr(g.spend)}</td><td>${inr2(g.avgCPV)}</td>
-    <td>${inr2(g.avgCPE)}</td><td>${pct(g.avgSaveShare)}</td></tr>`).join("");
-  return `<div class="tablewrap"><table style="min-width:0">
-    <thead><tr><th class="l">${title}</th><th>Pieces</th><th>Spend</th>
-    <th>Avg CPV</th><th>Avg CPE</th><th>Avg S+S</th></tr></thead>
-    <tbody>${rows}</tbody></table></div>`;
-}
+const sections={};  // id -> {items, state}
 
-function applyFilters(){
-  return DATA.pieces.filter(p=>{
-    if(state.format  && p.format !==state.format)  return false;
-    if(state.channel && p.channel!==state.channel) return false;
-    if(state.verdict && p.verdict!==state.verdict) return false;
-    if(state.q){ const q=state.q.toLowerCase();
-      if(!(`${p.title} ${p.format} ${p.channel} ${p.verdict}`.toLowerCase().includes(q))) return false; }
+function renderTable(id){
+  const sec=sections[id], st=sec.state;
+  let rows=sec.items.filter(p=>{
+    if(st.format && p.format!==st.format) return false;
+    if(st.verdict && p.verdict!==st.verdict) return false;
+    if(st.q){ const q=st.q.toLowerCase();
+      if(!`${p.title} ${p.format} ${p.channel} ${p.verdict}`.toLowerCase().includes(q)) return false; }
     return true;
   }).sort((a,b)=>{
-    const k=state.sortKey; let av=a[k], bv=b[k];
-    if(typeof av==="string"||typeof bv==="string"){ av=(av||"").toString().toLowerCase(); bv=(bv||"").toString().toLowerCase();
-      return av<bv?-state.sortDir: av>bv?state.sortDir:0; }
-    av=av==null?Infinity:av; bv=bv==null?Infinity:bv;
-    return (av-bv)*state.sortDir;
+    let av=a[st.sortKey], bv=b[st.sortKey];
+    if(typeof av==="string"||typeof bv==="string"){ av=(av||"").toLowerCase(); bv=(bv||"").toLowerCase();
+      return av<bv?-st.sortDir:av>bv?st.sortDir:0; }
+    av=av==null?Infinity:av; bv=bv==null?Infinity:bv; return (av-bv)*st.sortDir;
   });
+  const thead=document.querySelector(`#tbl-${id} thead`);
+  thead.innerHTML="<tr>"+COLS.map(c=>{
+    const sorted=c.k===st.sortKey;
+    const arrow=c.sortable===false?"":`<span class="arrow">${sorted?(st.sortDir>0?"▲":"▼"):"▲"}</span>`;
+    return `<th class="${c.l?"l ":""}${sorted?"sorted":""}" data-k="${c.k}" data-s="${c.sortable!==false}">${c.label}${arrow}</th>`;
+  }).join("")+"</tr>";
+  document.querySelector(`#tbl-${id} tbody`).innerHTML=
+    rows.map((p,i)=>"<tr>"+COLS.map(c=>c.fmt(p,i)).join("")+"</tr>").join("");
+  document.getElementById(`cnt-${id}`).textContent=`${rows.length} of ${sec.items.length}`;
+  thead.querySelectorAll("th").forEach(th=>{ if(th.dataset.s==="true") th.onclick=()=>{
+    if(st.sortKey===th.dataset.k) st.sortDir*=-1; else { st.sortKey=th.dataset.k; st.sortDir=1; }
+    renderTable(id);
+  };});
 }
 
-function renderTable(){
-  const rows=applyFilters();
-  const head=COLS.map(c=>{
-    const sorted=c.k===state.sortKey;
-    const arrow=c.sortable===false?"":`<span class="arrow">${sorted?(state.sortDir>0?"▲":"▼"):"▲"}</span>`;
-    return `<th class="${c.l?"l ":""}${sorted?"sorted":""}" data-k="${c.k}" data-sortable="${c.sortable!==false}">${c.label}${arrow}</th>`;
-  }).join("");
-  const body=rows.map((p,i)=>"<tr>"+COLS.map(c=>{
-    if(c.k==="rank") return `<td class="rank">${i+1}</td>`;
-    const cls=c.l?"l":""; return `<td class="${cls}">${c.fmt(p)}</td>`;
-  }).join("")+"</tr>").join("");
-  document.getElementById("tbody").innerHTML=body;
-  document.querySelector("#perftable thead").innerHTML="<tr>"+head+"</tr>";
-  document.getElementById("rowcount").textContent=`${rows.length} of ${DATA.pieces.length} pieces`;
-  document.querySelectorAll("#perftable thead th").forEach(th=>{
-    if(th.dataset.sortable==="true") th.onclick=()=>{
-      const k=th.dataset.k;
-      if(state.sortKey===k) state.sortDir*=-1; else { state.sortKey=k; state.sortDir=1; }
-      renderTable();
-    };
-  });
+function sectionHTML(id, cls, title, tag, items){
+  const s=summarize(items);
+  if(!items.length) return `<section class="obj"><div class="objhead ${cls}">
+    <span class="dot"></span><h2>${title}</h2><span class="tag">${tag}</span></div>
+    <div class="empty">No pieces in this objective yet.</div></section>`;
+  const cards=`<div class="seclabel">Summary</div><div class="cards">
+    <div class="card"><div class="k">Pieces</div><div class="v">${s.pieces}</div></div>
+    <div class="card"><div class="k">Total spend</div><div class="v">${inr(s.spend)}</div></div>
+    <div class="card"><div class="k">Avg CPV</div><div class="v">${inr2(s.avgCPV)}</div></div>
+    <div class="card"><div class="k">Avg CPE</div><div class="v">${inr2(s.avgCPE)}</div></div>
+    <div class="card"><div class="k">Avg save+share</div><div class="v">${pct(s.avgSaveShare)}</div></div>
+    <div class="card"><div class="k">Profitable</div><div class="v" style="color:var(--good)">${s.profitable}</div></div>
+    <div class="card"><div class="k">Loss-making</div><div class="v" style="color:var(--bad)">${s.lossMaking}</div></div></div>`;
+  const hl=`<div class="hl">
+    <div class="hlcard best"><div class="lbl">Best in ${title}</div>
+      <div class="ttl">${s.best.title}</div><div class="det">CPV ${inr2(s.best.cpv)} · ${s.best.verdict}</div></div>
+    <div class="hlcard worst"><div class="lbl">Weakest in ${title}</div>
+      <div class="ttl">${s.worst.title}</div><div class="det">CPV ${inr2(s.worst.cpv)} · ${s.worst.verdict}</div></div></div>`;
+  const charts=`<div class="seclabel">Visuals</div><div class="charts">
+    <div class="chartbox"><h3>Cost per view by piece (lower is better)</h3><canvas id="cpv-${id}"></canvas></div>
+    <div class="chartbox"><h3>Verdict mix</h3><canvas id="vd-${id}"></canvas></div></div>`;
+  const formats=uniq(items.map(p=>p.format)).map(x=>`<option>${x}</option>`).join("");
+  const verdicts=uniq(items.map(p=>p.verdict)).map(x=>`<option>${x}</option>`).join("");
+  const table=`<div class="seclabel">Ranked pieces <span style="text-transform:none;letter-spacing:0">(click a column to sort)</span></div>
+    <div class="filters">
+      <input id="q-${id}" placeholder="Search…">
+      <select id="fmt-${id}"><option value="">All formats</option>${formats}</select>
+      <select id="vd2-${id}"><option value="">All verdicts</option>${verdicts}</select>
+      <button class="reset" id="rst-${id}">Reset</button>
+      <span class="count" id="cnt-${id}"></span></div>
+    <div class="tablewrap"><table id="tbl-${id}"><thead></thead><tbody></tbody></table></div>`;
+  return `<section class="obj"><div class="objhead ${cls}">
+    <span class="dot"></span><h2>${title}</h2><span class="tag">${tag} · ${s.pieces} piece${s.pieces>1?"s":""}</span></div>
+    ${cards}${hl}${charts}${table}</section>`;
 }
 
-function buildCharts(){
-  const ranked=[...DATA.pieces].sort((a,b)=>(a.cpv??1e9)-(b.cpv??1e9));
+function wireSection(id, items){
+  sections[id]={items, state:{q:"",format:"",verdict:"",sortKey:"cpv",sortDir:1}};
+  if(!items.length) return;
+  // charts
   Chart.defaults.color="#9aa3b2"; Chart.defaults.borderColor="#2a2f3a"; Chart.defaults.font.size=11;
-
-  new Chart(document.getElementById("cpvChart"),{
-    type:"bar",
-    data:{ labels:ranked.map(p=>p.title),
-      datasets:[{ label:"CPV (₹)", data:ranked.map(p=>p.cpv),
-        backgroundColor:ranked.map(p=>verdictColor(p.verdict)) }]},
-    options:{ plugins:{legend:{display:false}}, responsive:true,
-      scales:{ x:{ticks:{maxRotation:38,minRotation:0}}, y:{beginAtZero:true} } }
-  });
-
+  const ranked=[...items].sort((a,b)=>(a.cpv??1e9)-(b.cpv??1e9));
+  new Chart(document.getElementById(`cpv-${id}`),{type:"bar",
+    data:{labels:ranked.map(p=>p.title),datasets:[{data:ranked.map(p=>p.cpv),
+      backgroundColor:ranked.map(p=>vColor(p.verdict))}]},
+    options:{plugins:{legend:{display:false}},scales:{x:{ticks:{maxRotation:38}},y:{beginAtZero:true}}}});
   const vc={Profitable:0,"Broke even":0,"Loss-making":0};
-  DATA.pieces.forEach(p=>{ if(vc[p.verdict]!=null) vc[p.verdict]++; });
-  new Chart(document.getElementById("verdictChart"),{
-    type:"doughnut",
-    data:{ labels:Object.keys(vc),
-      datasets:[{ data:Object.values(vc),
-        backgroundColor:["#34c08a","#d9b25a","#e2655b"], borderColor:"#181b22", borderWidth:2 }]},
-    options:{ plugins:{legend:{position:"bottom"}}, cutout:"58%" }
-  });
-
-  const fg=groupStats(DATA.pieces,"format");
-  new Chart(document.getElementById("formatChart"),{
-    type:"bar",
-    data:{ labels:fg.map(g=>g.name),
-      datasets:[{ label:"Avg CPV (₹)", data:fg.map(g=>g.avgCPV), backgroundColor:"#c9a24b" }]},
-    options:{ indexAxis:"y", plugins:{legend:{display:false}}, scales:{x:{beginAtZero:true}} }
-  });
+  items.forEach(p=>{ if(vc[p.verdict]!=null) vc[p.verdict]++; });
+  new Chart(document.getElementById(`vd-${id}`),{type:"doughnut",
+    data:{labels:Object.keys(vc),datasets:[{data:Object.values(vc),
+      backgroundColor:["#34c08a","#d9b25a","#e2655b"],borderColor:"#181b22",borderWidth:2}]},
+    options:{plugins:{legend:{position:"bottom"}},cutout:"58%"}});
+  renderTable(id);
+  const st=sections[id].state;
+  const bind=(eid,key)=>{ const el=document.getElementById(eid);
+    el.oninput=el.onchange=()=>{ st[key]=el.value; renderTable(id); }; };
+  bind(`q-${id}`,"q"); bind(`fmt-${id}`,"format"); bind(`vd2-${id}`,"verdict");
+  document.getElementById(`rst-${id}`).onclick=()=>{ st.q=st.format=st.verdict="";
+    [`q-${id}`,`fmt-${id}`,`vd2-${id}`].forEach(i=>document.getElementById(i).value=""); renderTable(id); };
 }
 
 function render(d){
-  DATA=d;
   document.getElementById("meta").innerHTML =
     `Source: ${d.meta.source} &nbsp;·&nbsp; Months: ${(d.meta.monthsCovered||[]).join(", ")||"—"} `+
     `&nbsp;·&nbsp; Updated ${new Date(d.meta.generatedAt).toLocaleString("en-IN")}`;
-
-  const s=d.summary, h=d.highlights;
-  const cards=`<h2>Summary</h2><div class="cards">
-    <div class="card"><div class="k">Pieces analysed</div><div class="v">${s.pieces}</div></div>
-    <div class="card"><div class="k">Avg CPV</div><div class="v">${inr2(s.avgCPV)}</div></div>
-    <div class="card"><div class="k">Avg CPE</div><div class="v">${inr2(s.avgCPE)}</div></div>
-    <div class="card"><div class="k">Avg save + share</div><div class="v">${pct(s.avgSaveShareRate)}</div></div>
-    <div class="card"><div class="k">Profitable</div><div class="v" style="color:var(--good)">${s.profitable}</div></div>
-    <div class="card"><div class="k">Broke even</div><div class="v" style="color:var(--even)">${s.brokeEven}</div></div>
-    <div class="card"><div class="k">Loss-making</div><div class="v" style="color:var(--bad)">${s.lossMaking}</div></div></div>`;
-
-  const hl=`<h2>Highlights</h2><div class="hl">
-    <div class="hlcard best"><div class="lbl">Highest performer</div>
-      <div class="ttl">${h.bestPerformer.title}</div>
-      <div class="det">CPV ${inr2(h.bestPerformer.cpv)} · ${h.bestPerformer.verdict}</div></div>
-    <div class="hlcard worst"><div class="lbl">Lowest performer</div>
-      <div class="ttl">${h.worstPerformer.title}</div>
-      <div class="det">CPV ${inr2(h.worstPerformer.cpv)} · ${h.worstPerformer.verdict}</div></div></div>`;
-
-  const charts=`<h2>Visuals</h2><div class="charts">
-    <div class="chartbox"><h3>Cost per view by piece (lower is better)</h3><canvas id="cpvChart"></canvas></div>
-    <div class="chartbox"><h3>Verdict mix</h3><canvas id="verdictChart"></canvas></div></div>
-    <div class="charts" style="margin-top:14px">
-    <div class="chartbox"><h3>Avg CPV by format</h3><canvas id="formatChart"></canvas></div>
-    <div class="chartbox"><h3>&nbsp;</h3><div style="color:var(--muted);font-size:13px">
-      Charts reflect all ${s.pieces} pieces. Use the filters below to slice the table.</div></div></div>`;
-
-  const bd=`<h2>Breakdowns</h2><div class="bd">
-    ${breakdownTable("By format","format")}
-    ${breakdownTable("By channel","channel")}</div>`;
-
-  const formats=uniq(d.pieces.map(p=>p.format)).map(x=>`<option>${x}</option>`).join("");
-  const channels=uniq(d.pieces.map(p=>p.channel)).map(x=>`<option>${x}</option>`).join("");
-  const verdicts=uniq(d.pieces.map(p=>p.verdict)).map(x=>`<option>${x}</option>`).join("");
-  const table=`<h2>Ranked performance <span class="note">(click any column to sort)</span></h2>
-    <div class="filters">
-      <input id="f-q" placeholder="Search content…">
-      <select id="f-format"><option value="">All formats</option>${formats}</select>
-      <select id="f-channel"><option value="">All channels</option>${channels}</select>
-      <select id="f-verdict"><option value="">All verdicts</option>${verdicts}</select>
-      <button class="reset" id="f-reset">Reset</button>
-      <span class="count" id="rowcount"></span>
-    </div>
-    <div class="tablewrap"><table id="perftable"><thead></thead><tbody id="tbody"></tbody></table></div>`;
-
-  document.getElementById("content").innerHTML=cards+hl+charts+bd+table+
-    `<footer>Engagement &amp; spend metrics only — no revenue or lead data is published on this page.</footer>`;
-
-  buildCharts();
-  renderTable();
-  const bind=(id,key)=>{ const el=document.getElementById(id);
-    el.oninput=el.onchange=()=>{ state[key]=el.value; renderTable(); }; };
-  bind("f-q","q"); bind("f-format","format"); bind("f-channel","channel"); bind("f-verdict","verdict");
-  document.getElementById("f-reset").onclick=()=>{
-    state={...state,q:"",format:"",channel:"",verdict:""};
-    ["f-q","f-format","f-channel","f-verdict"].forEach(i=>document.getElementById(i).value="");
-    renderTable();
-  };
+  const eng=d.pieces.filter(p=>p.objective==="Engagement");
+  const trf=d.pieces.filter(p=>p.objective==="Traffic");
+  const other=d.pieces.filter(p=>!["Engagement","Traffic"].includes(p.objective));
+  let html=sectionHTML("eng","eng","Engagement","Ads Manager campaign",eng)
+         + sectionHTML("trf","trf","Traffic","In-app boost",trf);
+  if(other.length) html+=sectionHTML("oth","trf","Other"," ",other);
+  html+=`<footer>Engagement &amp; spend metrics only — no revenue or lead data is published on this page.</footer>`;
+  document.getElementById("content").innerHTML=html;
+  wireSection("eng",eng); wireSection("trf",trf); if(other.length) wireSection("oth",other);
 }
 
 fetch("./data.json?_="+Date.now())
@@ -288,3 +251,4 @@ fetch("./data.json?_="+Date.now())
 </script>
 </body>
 </html>
+                                                                                                                                                                                                                                                                                                                           
