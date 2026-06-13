@@ -1,16 +1,14 @@
 {
   "meta": {
     "source": "DMoksha_Content_SourceOfTruth.xlsx · Analysis tab",
-    "generatedAt": "2026-06-13T14:23:03Z",
+    "generatedAt": "2026-06-13T14:30:07Z",
     "currency": "INR",
     "scope": "Public — engagement & spend only. No revenue or lead data.",
     "objectiveMap": {
-      "In-app Boost": "Traffic",
-      "Engagement campaign": "Engagement"
+      "Traffic": "Traffic (in-app boost)",
+      "Engagement": "Engagement (campaign)"
     },
-    "monthsCovered": [
-      "Apr 2026"
-    ]
+    "monthsCovered": []
   },
   "summary": {
     "pieces": 4,
@@ -37,8 +35,9 @@
     {
       "title": "Motorized curtain reveal",
       "format": "Reel",
-      "channel": "In-app Boost",
+      "channel": "Traffic",
       "objective": "Traffic",
+      "month": "",
       "spend": 6000.0,
       "views": 72000.0,
       "cpv": 0.083333,
@@ -52,8 +51,9 @@
     {
       "title": "5 fabrics for Mumbai humidity",
       "format": "Carousel",
-      "channel": "Engagement campaign",
+      "channel": "Engagement",
       "objective": "Engagement",
+      "month": "",
       "spend": 4500.0,
       "views": 38000.0,
       "cpv": 0.118421,
@@ -67,8 +67,9 @@
     {
       "title": "Client home — Bandra",
       "format": "Post",
-      "channel": "In-app Boost",
+      "channel": "Traffic",
       "objective": "Traffic",
+      "month": "",
       "spend": 3500.0,
       "views": 14000.0,
       "cpv": 0.25,
@@ -82,8 +83,9 @@
     {
       "title": "Pelmet styling tips",
       "format": "Reel",
-      "channel": "In-app Boost",
+      "channel": "Traffic",
       "objective": "Traffic",
+      "month": "",
       "spend": 5000.0,
       "views": 28000.0,
       "cpv": 0.178571,
