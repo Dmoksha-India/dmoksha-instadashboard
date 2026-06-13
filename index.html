@@ -13,12 +13,13 @@
     --good:#34c08a; --good-bg:rgba(52,192,138,.12);
     --bad:#e2655b; --bad-bg:rgba(226,101,91,.12);
     --even:#d9b25a; --even-bg:rgba(217,178,90,.12);
+    --na:#6b7280; --na-bg:rgba(107,114,128,.14);
   }
   *{box-sizing:border-box}
   body{margin:0;background:var(--bg);color:var(--txt);
     font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
     line-height:1.5;-webkit-font-smoothing:antialiased}
-  .wrap{max-width:1180px;margin:0 auto;padding:32px 20px 64px}
+  .wrap{max-width:1200px;margin:0 auto;padding:32px 20px 64px}
   header.top{border-bottom:1px solid var(--line);padding-bottom:20px;margin-bottom:8px}
   h1{margin:0 0 6px;font-size:26px;letter-spacing:.2px}
   .sub{color:var(--muted);font-size:14px}
@@ -30,31 +31,29 @@
     padding:8px 20px 24px;background:rgba(255,255,255,.012)}
   .objhead{display:flex;align-items:center;gap:12px;margin:18px 4px 6px}
   .objhead .dot{width:12px;height:12px;border-radius:50%}
-  .objhead h2{font-size:20px;margin:0;letter-spacing:.2px;text-transform:none}
+  .objhead h2{font-size:20px;margin:0;letter-spacing:.2px}
   .objhead .tag{font-size:12px;color:var(--muted)}
   .objhead.eng .dot{background:var(--eng)} .objhead.eng h2{color:var(--eng)}
   .objhead.trf .dot{background:var(--trf)} .objhead.trf h2{color:var(--trf)}
 
-  .seclabel{font-size:12px;text-transform:uppercase;letter-spacing:1.2px;color:var(--muted);
-    margin:24px 0 12px;font-weight:600}
-  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(132px,1fr));gap:10px}
+  .seclabel{font-size:12px;text-transform:uppercase;letter-spacing:1.2px;color:var(--muted);margin:24px 0 12px;font-weight:600}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px}
   .card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px}
   .card .k{font-size:11.5px;color:var(--muted);margin-bottom:6px}
   .card .v{font-size:21px;font-weight:650}
   .hl{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
   @media(max-width:620px){.hl{grid-template-columns:1fr}}
   .hlcard{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px;border-left:4px solid var(--line)}
-  .hlcard.best{border-left-color:var(--good)}
-  .hlcard.worst{border-left-color:var(--bad)}
+  .hlcard.best{border-left-color:var(--good)} .hlcard.worst{border-left-color:var(--bad)}
   .hlcard .lbl{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--muted)}
-  .hlcard .ttl{font-size:17px;font-weight:650;margin:6px 0 4px}
+  .hlcard .ttl{font-size:16px;font-weight:650;margin:6px 0 4px}
   .hlcard .det{font-size:13px;color:var(--muted)}
 
-  .charts{display:grid;grid-template-columns:1.4fr 1fr;gap:12px;margin-top:6px}
+  .charts{display:grid;grid-template-columns:1.5fr 1fr;gap:12px;margin-top:6px}
   @media(max-width:780px){.charts{grid-template-columns:1fr}}
   .chartbox{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px}
   .chartbox h3{margin:0 0 12px;font-size:13px;color:var(--muted);font-weight:600}
-  .chartbox canvas{max-height:240px}
+  .chartbox canvas{max-height:300px}
 
   .filters{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:12px}
   .filters input,.filters select{background:var(--panel2);color:var(--txt);border:1px solid var(--line);
@@ -63,11 +62,11 @@
   .filters input::placeholder{color:var(--muted)}
   .filters .reset{cursor:pointer;color:var(--accent);background:none;border:none;font-size:13px}
   .count{color:var(--muted);font-size:12px;margin-left:auto}
-  .tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--panel)}
-  table{border-collapse:collapse;width:100%;font-size:13.5px;min-width:760px}
-  th,td{padding:11px 12px;text-align:right;white-space:nowrap}
+  .tablewrap{overflow-x:auto;max-height:560px;overflow-y:auto;border:1px solid var(--line);border-radius:12px;background:var(--panel)}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;min-width:820px}
+  th,td{padding:10px 12px;text-align:right;white-space:nowrap}
   th{background:var(--panel2);color:var(--muted);font-weight:600;font-size:11.5px;
-    text-transform:uppercase;letter-spacing:.6px;cursor:pointer;user-select:none}
+    text-transform:uppercase;letter-spacing:.6px;cursor:pointer;user-select:none;position:sticky;top:0;z-index:1}
   th.l,td.l{text-align:left}
   th .arrow{opacity:.4;font-size:10px;margin-left:3px}
   th.sorted .arrow{opacity:1;color:var(--accent)}
@@ -80,8 +79,7 @@
   .b-good{color:var(--good);background:var(--good-bg)}
   .b-bad{color:var(--bad);background:var(--bad-bg)}
   .b-even{color:var(--even);background:var(--even-bg)}
-  .empty{color:var(--muted);font-size:14px;padding:20px;text-align:center;
-    border:1px dashed var(--line);border-radius:12px}
+  .b-na{color:var(--na);background:var(--na-bg)}
   footer{margin-top:34px;color:var(--muted);font-size:12px;text-align:center}
   .err{background:var(--bad-bg);color:var(--bad);border:1px solid var(--bad);padding:14px 16px;border-radius:10px;font-size:14px}
 </style>
@@ -90,7 +88,7 @@
 <div class="wrap">
   <header class="top">
     <h1>D'Moksha — Instagram Content Performance</h1>
-    <div class="sub">Boosted content efficiency &amp; verdict, split by objective.</div>
+    <div class="sub">Boosted content efficiency, split by objective.</div>
     <span class="scope">Public view · engagement &amp; spend only</span>
     <div class="meta" id="meta"></div>
   </header>
@@ -98,140 +96,129 @@
 </div>
 
 <script>
-const pct  = v => v==null ? "—" : (v*100).toFixed(1)+"%";
-const inr  = v => v==null ? "—" : "₹"+Number(v).toLocaleString("en-IN",{maximumFractionDigits:0});
-const inr2 = v => v==null ? "—" : "₹"+Number(v).toFixed(2);
 const num  = v => v==null ? "—" : Number(v).toLocaleString("en-IN");
-const vClass = v => { const t=(v||"").toLowerCase();
+const pct  = v => v==null ? "—" : (v*100).toFixed(1)+"%";
+const spendF = v => v==null ? "—" : "₹"+Number(v).toLocaleString("en-IN",{minimumFractionDigits:v<100?2:0,maximumFractionDigits:v<100?2:0});
+const cpvF = v => v==null ? "—" : "₹"+Number(v).toFixed(4);
+const cpeF = v => v==null ? "—" : "₹"+Number(v).toFixed(3);
+const vTxt = v => v==null ? "No spend" : v;
+const vClass = v => { if(v==null) return "b-na"; const t=v.toLowerCase();
   return t.startsWith("profit")?"b-good":t.startsWith("loss")?"b-bad":"b-even"; };
-const vColor = v => { const t=(v||"").toLowerCase();
+const vColor = v => { if(v==null) return "#6b7280"; const t=v.toLowerCase();
   return t.startsWith("profit")?"#34c08a":t.startsWith("loss")?"#e2655b":"#d9b25a"; };
 const uniq = a => [...new Set(a)].filter(Boolean);
 
 const COLS=[
   {k:"rank",  label:"#",       l:true, sortable:false, fmt:(p,i)=>`<td class="rank">${i+1}</td>`},
   {k:"title", label:"Content", l:true, fmt:p=>`<td class="l"><span class="title-cell">${p.title}</span><div class="fmt">${p.format} · ${p.channel}</div></td>`},
-  {k:"spend", label:"Spend",   fmt:p=>`<td>${inr(p.spend)}</td>`},
+  {k:"spend", label:"Spend",   fmt:p=>`<td>${spendF(p.spend)}</td>`},
+  {k:"reach", label:"Reach",   fmt:p=>`<td>${num(p.reach)}</td>`},
   {k:"views", label:"Views",   fmt:p=>`<td>${num(p.views)}</td>`},
-  {k:"cpv",   label:"CPV",     fmt:p=>`<td>${inr2(p.cpv)}</td>`},
-  {k:"cpe",   label:"CPE",     fmt:p=>`<td>${inr2(p.cpe)}</td>`},
-  {k:"saveRate", label:"Save", fmt:p=>`<td>${pct(p.saveRate)}</td>`},
-  {k:"shareRate",label:"Share",fmt:p=>`<td>${pct(p.shareRate)}</td>`},
-  {k:"hookRate", label:"Hook", fmt:p=>`<td>${p.hookRate==null?"—":pct(p.hookRate)}</td>`},
-  {k:"follows",  label:"Follows",fmt:p=>`<td>${num(p.follows)}</td>`},
-  {k:"verdict",  label:"Verdict",l:true,fmt:p=>`<td class="l"><span class="badge ${vClass(p.verdict)}">${p.verdict}</span></td>`},
+  {k:"engagements", label:"Engag.", fmt:p=>`<td>${num(p.engagements)}</td>`},
+  {k:"cpv",   label:"CPV",     fmt:p=>`<td>${cpvF(p.cpv)}</td>`},
+  {k:"cpe",   label:"CPE",     fmt:p=>`<td>${cpeF(p.cpe)}</td>`},
+  {k:"engRate", label:"Eng rate", fmt:p=>`<td>${pct(p.engRate)}</td>`},
+  {k:"verdict", label:"Verdict", l:true, fmt:p=>`<td class="l"><span class="badge ${vClass(p.verdict)}">${vTxt(p.verdict)}</span></td>`},
 ];
 
 function summarize(items){
-  const withCpv=items.filter(p=>typeof p.cpv==="number");
   const avg=f=>{ const v=items.map(f).filter(x=>x!=null); return v.length? v.reduce((a,b)=>a+b,0)/v.length:null; };
-  const count=v=>items.filter(p=>(p.verdict||"")===v).length;
-  return {
-    pieces:items.length, spend:items.reduce((a,b)=>a+(b.spend||0),0),
-    avgCPV:avg(p=>p.cpv), avgCPE:avg(p=>p.cpe),
-    avgSaveShare:avg(p=>(p.saveRate||0)+(p.shareRate||0)),
-    profitable:count("Profitable"), brokeEven:count("Broke even"), lossMaking:count("Loss-making"),
-    best: withCpv.length? withCpv.reduce((a,b)=>a.cpv<b.cpv?a:b):null,
-    worst:withCpv.length? withCpv.reduce((a,b)=>a.cpv>b.cpv?a:b):null,
-  };
+  const cnt=v=>items.filter(p=>(p.verdict||"")===v).length;
+  const wc=items.filter(p=>typeof p.cpv==="number");
+  return {pieces:items.length, boosted:items.filter(p=>p.boosted).length,
+    spend:items.reduce((a,b)=>a+(b.boosted?(b.spend||0):0),0),
+    avgCPV:avg(p=>p.cpv), avgCPE:avg(p=>p.cpe), avgEng:avg(p=>p.engRate),
+    profitable:cnt("Profitable"), brokeEven:cnt("Broke even"), lossMaking:cnt("Loss-making"),
+    best:wc.length?wc.reduce((a,b)=>a.cpv<b.cpv?a:b):null,
+    worst:wc.length?wc.reduce((a,b)=>a.cpv>b.cpv?a:b):null};
 }
 
-const sections={};  // id -> {items, state}
-
+const sections={};
 function renderTable(id){
   const sec=sections[id], st=sec.state;
   let rows=sec.items.filter(p=>{
     if(st.format && p.format!==st.format) return false;
-    if(st.verdict && p.verdict!==st.verdict) return false;
-    if(st.q){ const q=st.q.toLowerCase();
-      if(!`${p.title} ${p.format} ${p.channel} ${p.verdict}`.toLowerCase().includes(q)) return false; }
+    if(st.verdict && (p.verdict||"No spend")!==st.verdict) return false;
+    if(st.q && !`${p.title} ${p.format} ${p.channel}`.toLowerCase().includes(st.q.toLowerCase())) return false;
     return true;
   }).sort((a,b)=>{
     let av=a[st.sortKey], bv=b[st.sortKey];
-    if(typeof av==="string"||typeof bv==="string"){ av=(av||"").toLowerCase(); bv=(bv||"").toLowerCase();
-      return av<bv?-st.sortDir:av>bv?st.sortDir:0; }
+    if(typeof av==="string"||typeof bv==="string"){av=(av||"").toLowerCase();bv=(bv||"").toLowerCase();
+      return av<bv?-st.sortDir:av>bv?st.sortDir:0;}
     av=av==null?Infinity:av; bv=bv==null?Infinity:bv; return (av-bv)*st.sortDir;
   });
-  const thead=document.querySelector(`#tbl-${id} thead`);
-  thead.innerHTML="<tr>"+COLS.map(c=>{
-    const sorted=c.k===st.sortKey;
-    const arrow=c.sortable===false?"":`<span class="arrow">${sorted?(st.sortDir>0?"▲":"▼"):"▲"}</span>`;
-    return `<th class="${c.l?"l ":""}${sorted?"sorted":""}" data-k="${c.k}" data-s="${c.sortable!==false}">${c.label}${arrow}</th>`;
+  document.querySelector(`#tbl-${id} thead`).innerHTML="<tr>"+COLS.map(c=>{
+    const s=c.k===st.sortKey;
+    const ar=c.sortable===false?"":`<span class="arrow">${s?(st.sortDir>0?"▲":"▼"):"▲"}</span>`;
+    return `<th class="${c.l?"l ":""}${s?"sorted":""}" data-k="${c.k}" data-s="${c.sortable!==false}">${c.label}${ar}</th>`;
   }).join("")+"</tr>";
   document.querySelector(`#tbl-${id} tbody`).innerHTML=
     rows.map((p,i)=>"<tr>"+COLS.map(c=>c.fmt(p,i)).join("")+"</tr>").join("");
   document.getElementById(`cnt-${id}`).textContent=`${rows.length} of ${sec.items.length}`;
-  thead.querySelectorAll("th").forEach(th=>{ if(th.dataset.s==="true") th.onclick=()=>{
-    if(st.sortKey===th.dataset.k) st.sortDir*=-1; else { st.sortKey=th.dataset.k; st.sortDir=1; }
+  document.querySelectorAll(`#tbl-${id} thead th`).forEach(th=>{ if(th.dataset.s==="true") th.onclick=()=>{
+    if(st.sortKey===th.dataset.k) st.sortDir*=-1; else {st.sortKey=th.dataset.k; st.sortDir=1;}
     renderTable(id);
   };});
 }
 
-function sectionHTML(id, cls, title, tag, items){
+function sectionHTML(id,cls,title,tag,items){
   const s=summarize(items);
-  if(!items.length) return `<section class="obj"><div class="objhead ${cls}">
-    <span class="dot"></span><h2>${title}</h2><span class="tag">${tag}</span></div>
-    <div class="empty">No pieces in this objective yet.</div></section>`;
+  if(!items.length) return `<section class="obj"><div class="objhead ${cls}"><span class="dot"></span><h2>${title}</h2><span class="tag">${tag}</span></div><div style="color:var(--muted);padding:18px">No pieces in this objective yet.</div></section>`;
   const cards=`<div class="seclabel">Summary</div><div class="cards">
-    <div class="card"><div class="k">Pieces</div><div class="v">${s.pieces}</div></div>
-    <div class="card"><div class="k">Total spend</div><div class="v">${inr(s.spend)}</div></div>
-    <div class="card"><div class="k">Avg CPV</div><div class="v">${inr2(s.avgCPV)}</div></div>
-    <div class="card"><div class="k">Avg CPE</div><div class="v">${inr2(s.avgCPE)}</div></div>
-    <div class="card"><div class="k">Avg save+share</div><div class="v">${pct(s.avgSaveShare)}</div></div>
+    <div class="card"><div class="k">Posts (boosted)</div><div class="v">${s.pieces} <span style="font-size:13px;color:var(--muted)">/ ${s.boosted}</span></div></div>
+    <div class="card"><div class="k">Total spend</div><div class="v">${spendF(s.spend)}</div></div>
+    <div class="card"><div class="k">Avg CPV</div><div class="v">${cpvF(s.avgCPV)}</div></div>
+    <div class="card"><div class="k">Avg CPE</div><div class="v">${cpeF(s.avgCPE)}</div></div>
+    <div class="card"><div class="k">Avg eng rate</div><div class="v">${pct(s.avgEng)}</div></div>
     <div class="card"><div class="k">Profitable</div><div class="v" style="color:var(--good)">${s.profitable}</div></div>
     <div class="card"><div class="k">Loss-making</div><div class="v" style="color:var(--bad)">${s.lossMaking}</div></div></div>`;
   const hl=`<div class="hl">
-    <div class="hlcard best"><div class="lbl">Best in ${title}</div>
-      <div class="ttl">${s.best.title}</div><div class="det">CPV ${inr2(s.best.cpv)} · ${s.best.verdict}</div></div>
-    <div class="hlcard worst"><div class="lbl">Weakest in ${title}</div>
-      <div class="ttl">${s.worst.title}</div><div class="det">CPV ${inr2(s.worst.cpv)} · ${s.worst.verdict}</div></div></div>`;
+    <div class="hlcard best"><div class="lbl">Most efficient (lowest CPV)</div><div class="ttl">${s.best.title}</div><div class="det">CPV ${cpvF(s.best.cpv)} · ${vTxt(s.best.verdict)}</div></div>
+    <div class="hlcard worst"><div class="lbl">Least efficient (highest CPV)</div><div class="ttl">${s.worst.title}</div><div class="det">CPV ${cpvF(s.worst.cpv)} · ${vTxt(s.worst.verdict)}</div></div></div>`;
   const charts=`<div class="seclabel">Visuals</div><div class="charts">
-    <div class="chartbox"><h3>Cost per view by piece (lower is better)</h3><canvas id="cpv-${id}"></canvas></div>
+    <div class="chartbox"><h3>Top 10 most efficient — lowest CPV (₹)</h3><canvas id="cpv-${id}"></canvas></div>
     <div class="chartbox"><h3>Verdict mix</h3><canvas id="vd-${id}"></canvas></div></div>`;
   const formats=uniq(items.map(p=>p.format)).map(x=>`<option>${x}</option>`).join("");
-  const verdicts=uniq(items.map(p=>p.verdict)).map(x=>`<option>${x}</option>`).join("");
-  const table=`<div class="seclabel">Ranked pieces <span style="text-transform:none;letter-spacing:0">(click a column to sort)</span></div>
+  const table=`<div class="seclabel">All posts <span style="text-transform:none;letter-spacing:0">(click a column to sort · scroll for more)</span></div>
     <div class="filters">
       <input id="q-${id}" placeholder="Search…">
       <select id="fmt-${id}"><option value="">All formats</option>${formats}</select>
-      <select id="vd2-${id}"><option value="">All verdicts</option>${verdicts}</select>
+      <select id="vd2-${id}"><option value="">All verdicts</option><option>Profitable</option><option>Broke even</option><option>Loss-making</option><option>No spend</option></select>
       <button class="reset" id="rst-${id}">Reset</button>
       <span class="count" id="cnt-${id}"></span></div>
     <div class="tablewrap"><table id="tbl-${id}"><thead></thead><tbody></tbody></table></div>`;
-  return `<section class="obj"><div class="objhead ${cls}">
-    <span class="dot"></span><h2>${title}</h2><span class="tag">${tag} · ${s.pieces} piece${s.pieces>1?"s":""}</span></div>
-    ${cards}${hl}${charts}${table}</section>`;
+  return `<section class="obj"><div class="objhead ${cls}"><span class="dot"></span><h2>${title}</h2><span class="tag">${tag} · ${s.pieces} posts</span></div>${cards}${hl}${charts}${table}</section>`;
 }
 
-function wireSection(id, items){
+function wireSection(id,items){
   sections[id]={items, state:{q:"",format:"",verdict:"",sortKey:"cpv",sortDir:1}};
   if(!items.length) return;
-  // charts
   Chart.defaults.color="#9aa3b2"; Chart.defaults.borderColor="#2a2f3a"; Chart.defaults.font.size=11;
-  const ranked=[...items].sort((a,b)=>(a.cpv??1e9)-(b.cpv??1e9));
+  const top=[...items].filter(p=>p.cpv!=null).sort((a,b)=>a.cpv-b.cpv).slice(0,10);
   new Chart(document.getElementById(`cpv-${id}`),{type:"bar",
-    data:{labels:ranked.map(p=>p.title),datasets:[{data:ranked.map(p=>p.cpv),
-      backgroundColor:ranked.map(p=>vColor(p.verdict))}]},
-    options:{plugins:{legend:{display:false}},scales:{x:{ticks:{maxRotation:38}},y:{beginAtZero:true}}}});
-  const vc={Profitable:0,"Broke even":0,"Loss-making":0};
-  items.forEach(p=>{ if(vc[p.verdict]!=null) vc[p.verdict]++; });
+    data:{labels:top.map(p=>p.title.length>28?p.title.slice(0,27)+"…":p.title),
+      datasets:[{data:top.map(p=>p.cpv),backgroundColor:top.map(p=>vColor(p.verdict))}]},
+    options:{indexAxis:"y",plugins:{legend:{display:false}},scales:{x:{beginAtZero:true}}}});
+  const vc={Profitable:0,"Broke even":0,"Loss-making":0,"No spend":0};
+  items.forEach(p=>{ const k=p.verdict||"No spend"; if(vc[k]!=null) vc[k]++; });
   new Chart(document.getElementById(`vd-${id}`),{type:"doughnut",
     data:{labels:Object.keys(vc),datasets:[{data:Object.values(vc),
-      backgroundColor:["#34c08a","#d9b25a","#e2655b"],borderColor:"#181b22",borderWidth:2}]},
+      backgroundColor:["#34c08a","#d9b25a","#e2655b","#6b7280"],borderColor:"#181b22",borderWidth:2}]},
     options:{plugins:{legend:{position:"bottom"}},cutout:"58%"}});
   renderTable(id);
   const st=sections[id].state;
-  const bind=(eid,key)=>{ const el=document.getElementById(eid);
-    el.oninput=el.onchange=()=>{ st[key]=el.value; renderTable(id); }; };
+  const bind=(eid,key)=>{const el=document.getElementById(eid);el.oninput=el.onchange=()=>{st[key]=el.value;renderTable(id);};};
   bind(`q-${id}`,"q"); bind(`fmt-${id}`,"format"); bind(`vd2-${id}`,"verdict");
-  document.getElementById(`rst-${id}`).onclick=()=>{ st.q=st.format=st.verdict="";
-    [`q-${id}`,`fmt-${id}`,`vd2-${id}`].forEach(i=>document.getElementById(i).value=""); renderTable(id); };
+  document.getElementById(`rst-${id}`).onclick=()=>{st.q=st.format=st.verdict="";
+    [`q-${id}`,`fmt-${id}`,`vd2-${id}`].forEach(i=>document.getElementById(i).value="");renderTable(id);};
 }
 
 function render(d){
+  const m=d.meta;
   document.getElementById("meta").innerHTML =
-    `Source: ${d.meta.source} &nbsp;·&nbsp; Months: ${(d.meta.monthsCovered||[]).join(", ")||"—"} `+
-    `&nbsp;·&nbsp; Updated ${new Date(d.meta.generatedAt).toLocaleString("en-IN")}`;
+    `Source: ${m.source} &nbsp;·&nbsp; ${d.summary.boosted} boosted posts across ${m.monthCount} months `+
+    `&nbsp;·&nbsp; Updated ${new Date(m.generatedAt).toLocaleString("en-IN")}`+
+    (m.note?`<br><span style="color:var(--accent)">Note: ${m.note}</span>`:"");
   const eng=d.pieces.filter(p=>p.objective==="Engagement");
   const trf=d.pieces.filter(p=>p.objective==="Traffic");
   const other=d.pieces.filter(p=>!["Engagement","Traffic"].includes(p.objective));
@@ -251,4 +238,4 @@ fetch("./data.json?_="+Date.now())
 </script>
 </body>
 </html>
-                                                                                                                                                                                                                                                                                                                           
+                                               
