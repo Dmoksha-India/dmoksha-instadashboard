@@ -131,8 +131,8 @@
   </div>
   <header>
     <h1 class="title">India Instagram Analytics Dashboard</h1>
-    <p class="subtitle">How efficiently each reel, post and carousel reached people and earned engagement &mdash; and which ones quietly burned spend.</p>
-    <p class="ighandle"><a href="https://www.instagram.com/dmokshahomes_india/" target="_blank" rel="noopener">@dmokshahomes_india</a> on Instagram</p>
+    
+    
   </header>
   <div class="windowbar">
     <div class="toggle" id="windowToggle" role="group">
@@ -142,7 +142,7 @@
     </div>
     <span class="window-note" id="windowNote"></span>
   </div>
-  <p class="headline" id="headline"></p>
+  
   <p class="section-eyebrow">Boost spend</p>
   <section class="tiles">
     <article class="tile"><p class="tile-label">Total boost spend</p><div class="tile-value" id="t-spend">&mdash;</div><p class="tile-foot" id="t-split">&mdash;</p></article>
@@ -242,10 +242,7 @@ function renderTiles(){
   document.getElementById("t-best-name").textContent=best?best.title:"—";
   document.getElementById("t-bled").textContent=spendF(lossSpend);
   document.getElementById("t-bled-foot").innerHTML=`<b>${loss.length}</b> pieces below average`;
-  const profN=w.filter(p=>p.verdict==="Profitable").length;
-  const bg={}; boosted.forEach(p=>{ if(p.cpe!=null){(bg[p.bucket]=bg[p.bucket]||[]).push(p.cpe);} });
-  let bb=null,ba=Infinity; for(const k in bg){ if(bg[k].length>=2){ const a=bg[k].reduce((x,y)=>x+y,0)/bg[k].length; if(a<ba){ba=a;bb=k;} } }
-  document.getElementById("headline").innerHTML=`<b>${boosted.length}</b> posts boosted &middot; <b>${spendF(total)}</b> spent &middot; <b style="color:var(--ok-green)">${profN}</b> performed well, <b style="color:var(--ok-red)">${loss.length}</b> burned spend`+(bb?` &middot; <b>${esc(bb)}</b> was the most cost-efficient content type`:"")+`.`;
+
 }
 function renderTable(){
   const rows=filtered(); const avgCPV=DATA.summary.avgCPV, avgCPE=DATA.summary.avgCPE;
