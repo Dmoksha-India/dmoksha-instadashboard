@@ -154,7 +154,7 @@
     <div class="sortwrap">
       <label for="sortSel">Sort by</label>
       <select class="sortsel" id="sortSel">
-        <option value="spend">Spend</option><option value="cpv">Cost per view</option>
+        <option value="spend">Spend</option><option value="views">Views</option><option value="cpv">Cost per view</option>
         <option value="cpe">Cost per engagement</option><option value="engRate">Engagement rate</option>
         <option value="saveRate">Save rate</option>
       </select>
@@ -194,7 +194,7 @@ let DATA, state={window:"lifetime",fmt:"all",camp:"all",bucket:"all",sort:"spend
 const today=new Date();
 function inWindow(p){ if(state.window==="lifetime"||!p.date) return true; const d=new Date(p.date+"T00:00:00"); const days=(today-d)/86400000; if(days<0) return false; return state.window==="d7"?days<=7:days<=30; }
 function windowed(){ return DATA.pieces.filter(inWindow); }
-function filtered(){ return windowed().filter(p=>{ if(state.fmt!=="all"&&p.format!==state.fmt) return false; if(state.camp!=="all"&&p.objective!==state.camp) return false; if(state.bucket!=="all"&&p.bucket!==state.bucket) return false; return true; }).sort((a,b)=>{ const k=state.sort; let av=a[k],bv=b[k]; av=av==null?-Infinity:av; bv=bv==null?-Infinity:bv; return (k==="spend"||k==="engRate"||k==="saveRate")?bv-av:av-bv; }); }
+function filtered(){ return windowed().filter(p=>{ if(state.fmt!=="all"&&p.format!==state.fmt) return false; if(state.camp!=="all"&&p.objective!==state.camp) return false; if(state.bucket!=="all"&&p.bucket!==state.bucket) return false; return true; }).sort((a,b)=>{ const k=state.sort; let av=a[k],bv=b[k]; av=av==null?-Infinity:av; bv=bv==null?-Infinity:bv; return (k==="spend"||k==="views"||k==="engRate"||k==="saveRate")?bv-av:av-bv; }); }
 const vClass=v=>v==="Profitable"?"green":v==="Loss-making"?"red":v==="Broke even"?"amber":"grey";
 const vReason=v=>v==="Profitable"?"Low CPV &amp; CPE":v==="Loss-making"?"High CPV &amp; CPE":v==="Broke even"?"Mixed efficiency":"Not boosted";
 function renderTiles(){
