@@ -5,6 +5,7 @@
 <title>D'Moksha — India Instagram Analytics</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 <style>
   :root{--serif:"DM Serif Display",Georgia,serif;--sans:"DM Sans",system-ui,-apple-system,sans-serif;--mono:"DM Mono",ui-monospace,monospace;--purple:#6f2da8;--purple-ink:#ffffff;}
   html[data-theme="light"]{--bg:#f6f2ec;--surface:#fffdf9;--surface-2:#faf6ef;--ink:#2a2520;--ink-soft:#5c544a;--ink-mute:#948a7c;--line:#e7ded1;--line-strong:#d9cdbb;--ok-green:#2e7d57;--ok-green-bg:#e7f1ea;--ok-amber:#97681c;--ok-amber-bg:#f4ecda;--ok-red:#b13a2b;--ok-red-bg:#f7e3df;}
@@ -25,6 +26,16 @@
   .title{font-family:var(--serif);font-weight:400;font-size:clamp(34px,4.2vw,50px);line-height:1.12;letter-spacing:-.01em;margin:0;color:var(--ink)}
   .subtitle{margin:16px 0 0;color:var(--ink-soft);font-size:16px;max-width:52ch}
   .ighandle{margin:14px 0 0;font-size:14px;color:var(--ink-mute)} .ighandle a{color:var(--purple);text-decoration:none;font-weight:600} .ighandle a:hover{text-decoration:underline}
+  .headline{margin:26px 0 0;font-family:var(--serif);font-size:clamp(18px,2.2vw,23px);line-height:1.4;color:var(--ink);max-width:62ch}
+  .charts{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .chartcard{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 16px 12px}
+  .chartcard h3{margin:0 0 10px;font-size:13px;font-weight:600;color:var(--ink-soft)}
+  .chartbox{height:200px;position:relative}
+  @media(max-width:760px){.charts{grid-template-columns:1fr}}
+  .prow.v-green td{background:color-mix(in srgb,var(--ok-green) 6%,transparent)}
+  .prow.v-red td{background:color-mix(in srgb,var(--ok-red) 7%,transparent)}
+  .prow.v-green:hover td,.prow.v-red:hover td,.prow.v-amber:hover td{background:var(--surface-2)}
+  thead th[title]{cursor:help;text-decoration:underline dotted var(--line-strong);text-underline-offset:3px}
   .windowbar{margin-top:32px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
   .toggle{display:inline-flex;background:var(--surface);border:1px solid var(--line-strong);border-radius:999px;padding:4px;gap:2px}
   .toggle button{appearance:none;border:0;background:transparent;color:var(--ink-soft);font-family:var(--sans);font-size:14px;font-weight:500;padding:9px 20px;border-radius:999px;cursor:pointer;white-space:nowrap}
@@ -128,12 +139,19 @@
     </div>
     <span class="window-note" id="windowNote"></span>
   </div>
+  <p class="headline" id="headline"></p>
   <p class="section-eyebrow">Boost spend</p>
   <section class="tiles">
     <article class="tile"><p class="tile-label">Total boost spend</p><div class="tile-value" id="t-spend">&mdash;</div><p class="tile-foot" id="t-split">&mdash;</p></article>
     <article class="tile"><p class="tile-label">Pieces boosted</p><div class="tile-value" id="t-count">&mdash;</div><p class="tile-foot" id="t-count-foot">&mdash;</p></article>
     <article class="tile accent"><p class="tile-label">Most efficient</p><div class="tile-value" id="t-best-cpe">&mdash;</div><p class="tile-best" id="t-best-name">&mdash;</p></article>
     <article class="tile bled"><p class="tile-label">Loss-making spend</p><div class="tile-value" id="t-bled">&mdash;</div><p class="tile-foot" id="t-bled-foot">&mdash;</p></article>
+  </section>
+  <p class="section-eyebrow">At a glance</p>
+  <section class="charts">
+    <div class="chartcard"><h3>How posts performed</h3><div class="chartbox"><canvas id="chVerdict"></canvas></div></div>
+    <div class="chartcard"><h3>Spend by content type</h3><div class="chartbox"><canvas id="chBucket"></canvas></div></div>
+    <div class="chartcard"><h3>Most-viewed posts</h3><div class="chartbox"><canvas id="chTop"></canvas></div></div>
   </section>
   <p class="section-eyebrow">Ranked content</p>
   <div class="controls">
@@ -162,13 +180,21 @@
   </div>
   <div class="tablecard"><div class="tablescroll"><table>
     <thead><tr>
-      <th class="h-content">Content</th><th>Spend</th><th>Reach</th><th>Views</th>
-      <th>Save</th><th>Share</th><th>Follows</th><th>Engmts</th><th>CPV</th><th>CPE</th>
+      <th class="h-content">Content</th>
+      <th title="Money spent boosting this post">Spend</th>
+      <th title="People who saw it">Reach</th>
+      <th title="Number of plays / views">Views</th>
+      <th title="Saves ÷ reach — how many saved it">Save</th>
+      <th title="Shares ÷ reach — how many shared it">Share</th>
+      <th title="New profile follows from this post">Follows</th>
+      <th title="Total interactions: likes, comments, saves, shares">Engagements</th>
+      <th title="Cost per view — what you paid for each view. Lower is better">CPV</th>
+      <th title="Cost per engagement — what you paid per interaction. Lower is better">CPE</th>
       <th class="h-verdict">Verdict</th>
     </tr></thead><tbody id="tbody"></tbody>
   </table></div></div>
   <p class="caption" id="emptyNote" hidden><span class="dot"></span> No content matches these filters.</p>
-  <p class="action-note-disclaimer">Verdicts are based on engagement efficiency (CPV &amp; CPE) vs the average of pieces shown &mdash; not lead or revenue outcomes. Lead campaigns are excluded.</p>
+  <p class="action-note-disclaimer">Verdicts are based on engagement efficiency (CPV &amp; CPE) vs the average of pieces shown &mdash; not lead or revenue outcomes. Lead campaigns are excluded. Hover any column heading to see what it measures.</p>
   <div class="legend-rule">
     <span class="lg"><span class="lgdot green"></span>Profitable = low CPV &amp; CPE</span>
     <span class="lgsep">&middot;</span>
@@ -212,6 +238,10 @@ function renderTiles(){
   document.getElementById("t-best-name").textContent=best?best.title:"—";
   document.getElementById("t-bled").textContent=spendF(lossSpend);
   document.getElementById("t-bled-foot").innerHTML=`<b>${loss.length}</b> pieces below average`;
+  const profN=w.filter(p=>p.verdict==="Profitable").length;
+  const bg={}; boosted.forEach(p=>{ if(p.cpe!=null){(bg[p.bucket]=bg[p.bucket]||[]).push(p.cpe);} });
+  let bb=null,ba=Infinity; for(const k in bg){ if(bg[k].length>=2){ const a=bg[k].reduce((x,y)=>x+y,0)/bg[k].length; if(a<ba){ba=a;bb=k;} } }
+  document.getElementById("headline").innerHTML=`<b>${boosted.length}</b> posts boosted &middot; <b>${spendF(total)}</b> spent &middot; <b style="color:var(--ok-green)">${profN}</b> performed well, <b style="color:var(--ok-red)">${loss.length}</b> burned spend`+(bb?` &middot; <b>${esc(bb)}</b> was the most cost-efficient content type`:"")+`.`;
 }
 function renderTable(){
   const rows=filtered(); const avgCPV=DATA.summary.avgCPV, avgCPE=DATA.summary.avgCPE;
@@ -219,11 +249,27 @@ function renderTable(){
     const campCls=p.objective==="Traffic"?"camp-boost":"camp-eng";
     const cpvCls=p.cpv==null?"":(p.cpv<=avgCPV?"green":"red");
     const cpeCls=p.cpe==null?"":(p.cpe<=avgCPE?"green":"red");
-    return `<tr class="prow"><td class="c-content"><div class="cwrap"><div class="cmeta"><div class="ctitle">${esc(p.title)}</div></div></div></td><td class="num" data-label="Spend">${spendF(p.spend)}</td><td class="num" data-label="Reach">${intF(p.reach)}</td><td class="num" data-label="Views">${intF(p.views)}</td><td class="num" data-label="Save">${pct(p.saveRate)}</td><td class="num" data-label="Share">${pct(p.shareRate)}</td><td class="num" data-label="Follows">${intF(p.follows)}</td><td class="num" data-label="Engmts">${intF(p.engagements)}</td><td class="eff ${cpvCls}" data-label="CPV">${cpvF(p.cpv)}</td><td class="eff ${cpeCls}" data-label="CPE">${cpeF(p.cpe)}</td><td class="c-verdict"><span class="pill ${vClass(p.verdict)}">${p.verdict||"No spend"}</span><div class="reason">${vReason(p.verdict)}</div></td></tr>`;
+    return `<tr class="prow ${p.verdict==='Profitable'?'v-green':p.verdict==='Loss-making'?'v-red':p.verdict==='Broke even'?'v-amber':''}"><td class="c-content"><div class="cwrap"><div class="cmeta"><div class="ctitle">${esc(p.title)}</div></div></div></td><td class="num" data-label="Spend">${spendF(p.spend)}</td><td class="num" data-label="Reach">${intF(p.reach)}</td><td class="num" data-label="Views">${intF(p.views)}</td><td class="num" data-label="Save">${pct(p.saveRate)}</td><td class="num" data-label="Share">${pct(p.shareRate)}</td><td class="num" data-label="Follows">${intF(p.follows)}</td><td class="num" data-label="Engagements">${intF(p.engagements)}</td><td class="eff ${cpvCls}" data-label="CPV">${cpvF(p.cpv)}</td><td class="eff ${cpeCls}" data-label="CPE">${cpeF(p.cpe)}</td><td class="c-verdict"><span class="pill ${vClass(p.verdict)}">${p.verdict||"No spend"}</span><div class="reason">${vReason(p.verdict)}</div></td></tr>`;
   }).join("");
   document.getElementById("emptyNote").hidden = rows.length>0;
 }
-function renderAll(){ renderTiles(); renderTable(); }
+let CHARTS={};
+function buildCharts(){
+  if(typeof Chart==="undefined") return;
+  const w=windowed();
+  Chart.defaults.color="#948a7c"; Chart.defaults.borderColor="rgba(148,138,124,.16)"; Chart.defaults.font.family="DM Sans, sans-serif"; Chart.defaults.font.size=11;
+  const vc={Profitable:0,"Broke even":0,"Loss-making":0}; w.forEach(p=>{ if(vc[p.verdict]!=null) vc[p.verdict]++; });
+  const bk={}; w.forEach(p=>{ if(p.boosted) bk[p.bucket]=(bk[p.bucket]||0)+(p.spend||0); });
+  const bkE=Object.entries(bk).sort((a,b)=>b[1]-a[1]);
+  const top=[...w].filter(p=>p.views).sort((a,b)=>b.views-a.views).slice(0,5);
+  const cut=s=>s.length>22?s.slice(0,21)+"\u2026":s;
+  const base={responsive:true,maintainAspectRatio:false};
+  const mk=(id,cfg)=>{ const el=document.getElementById(id); if(!el) return; if(CHARTS[id]) CHARTS[id].destroy(); CHARTS[id]=new Chart(el,cfg); };
+  mk("chVerdict",{type:"doughnut",data:{labels:Object.keys(vc),datasets:[{data:Object.values(vc),backgroundColor:["#2e7d57","#d8af6a","#b13a2b"],borderWidth:0}]},options:{...base,cutout:"58%",plugins:{legend:{position:"bottom",labels:{boxWidth:10,padding:8}}}}});
+  mk("chBucket",{type:"bar",data:{labels:bkE.map(e=>e[0]),datasets:[{data:bkE.map(e=>e[1]),backgroundColor:"#6f2da8",borderRadius:5}]},options:{...base,indexAxis:"y",plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>"\u20b9"+Math.round(c.raw).toLocaleString("en-IN")}}},scales:{x:{ticks:{callback:v=>"\u20b9"+Math.round(v/1000)+"k"}}}}});
+  mk("chTop",{type:"bar",data:{labels:top.map(p=>cut(p.title)),datasets:[{data:top.map(p=>p.views),backgroundColor:"#5aa9e6",borderRadius:5}]},options:{...base,indexAxis:"y",plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.raw.toLocaleString("en-IN")+" views"}}},scales:{x:{ticks:{callback:v=>(v/1000)+"k"}}}}});
+}
+function renderAll(){ renderTiles(); renderTable(); buildCharts(); }
 function bindChips(id,key){ document.getElementById(id).addEventListener("click",e=>{ const b=e.target.closest(".chip"); if(!b) return; state[key]=b.dataset.fmt||b.dataset.camp||b.dataset.bucket; [...e.currentTarget.children].forEach(c=>c.setAttribute("aria-pressed",c===b?"true":"false")); renderTable(); }); }
 function render(d){
   DATA=d;
