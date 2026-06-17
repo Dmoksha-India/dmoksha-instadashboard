@@ -73,8 +73,12 @@
   .tablescroll{overflow-x:auto;max-height:640px;overflow-y:auto}
   table{width:100%;border-collapse:collapse;min-width:1180px}
   thead th{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mute);font-weight:600;text-align:right;padding:12px 14px;border-bottom:1px solid var(--line-strong);white-space:nowrap;background:var(--surface-2);position:sticky;top:0;z-index:1}
-  thead th.h-group{text-align:center;padding:7px 14px;color:var(--ink-soft);border-bottom:1px solid var(--line)}
+  thead th.h-group{text-align:center;padding:7px 14px;color:var(--ink-soft);border-bottom:1px solid var(--line);border-left:1px solid var(--line-strong);border-right:1px solid var(--line-strong)}
   thead th.h-sub{top:30px;padding:7px 14px;font-size:10px;text-transform:none;letter-spacing:.02em}
+  thead tr:last-child th.h-sub:first-child{border-left:1px solid var(--line-strong)}
+  thead tr:last-child th.h-sub:last-child{border-right:1px solid var(--line-strong)}
+  tbody td[data-label="Engagements"]{border-left:1px solid var(--line-strong)}
+  tbody td[data-label="Saves"]{border-right:1px solid var(--line-strong)}
   thead th.h-content{text-align:left;padding-left:26px} thead th.h-verdict{text-align:left;padding-right:26px}
   tbody td{padding:16px 14px;border-bottom:1px solid var(--line);font-size:14px;text-align:right;vertical-align:middle;font-variant-numeric:tabular-nums;color:var(--ink-soft)}
   tbody tr:last-child td{border-bottom:0} .prow:hover td{background:var(--surface-2)}
