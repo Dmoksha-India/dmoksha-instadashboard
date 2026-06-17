@@ -6,6 +6,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
 <style>
   :root{--serif:"DM Serif Display",Georgia,serif;--sans:"DM Sans",system-ui,-apple-system,sans-serif;--mono:"DM Mono",ui-monospace,monospace;--purple:#6f2da8;--purple-ink:#ffffff;}
   html[data-theme="light"]{--bg:#f6f2ec;--surface:#fffdf9;--surface-2:#faf6ef;--ink:#2a2520;--ink-soft:#5c544a;--ink-mute:#948a7c;--line:#e7ded1;--line-strong:#d9cdbb;--ok-green:#2e7d57;--ok-green-bg:#e7f1ea;--ok-amber:#97681c;--ok-amber-bg:#f4ecda;--ok-red:#b13a2b;--ok-red-bg:#f7e3df;}
@@ -257,6 +258,7 @@ function renderTable(){
 let CHARTS={};
 function buildCharts(){
   if(typeof Chart==="undefined") return;
+  if(window.ChartDataLabels&&!buildCharts._reg){ Chart.register(window.ChartDataLabels); buildCharts._reg=true; }
   const w=windowed();
   Chart.defaults.color="#948a7c"; Chart.defaults.borderColor="rgba(148,138,124,.16)"; Chart.defaults.font.family="DM Sans, sans-serif"; Chart.defaults.font.size=11;
   const vc={Profitable:0,"Broke even":0,"Loss-making":0}; w.forEach(p=>{ if(vc[p.verdict]!=null) vc[p.verdict]++; });
@@ -266,9 +268,9 @@ function buildCharts(){
   const cut=s=>{const i=s.search(/[_:;]/);let t=i>=0?s.slice(i+1).trim():s;return t.length>26?t.slice(0,25)+"\u2026":t;};
   const base={responsive:true,maintainAspectRatio:false};
   const mk=(id,cfg)=>{ const el=document.getElementById(id); if(!el) return; if(CHARTS[id]) CHARTS[id].destroy(); CHARTS[id]=new Chart(el,cfg); };
-  mk("chVerdict",{type:"doughnut",data:{labels:Object.keys(vc),datasets:[{data:Object.values(vc),backgroundColor:["#2e7d57","#d8af6a","#b13a2b"],borderWidth:0}]},options:{...base,cutout:"58%",plugins:{legend:{position:"bottom",labels:{boxWidth:10,padding:8}}}}});
-  mk("chBucket",{type:"bar",data:{labels:bkE.map(e=>e[0]),datasets:[{data:bkE.map(e=>e[1]),backgroundColor:"#6f2da8",borderRadius:5}]},options:{...base,indexAxis:"y",plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>"\u20b9"+Math.round(c.raw).toLocaleString("en-IN")}}},scales:{x:{ticks:{callback:v=>"\u20b9"+Math.round(v/1000)+"k"}}}}});
-  mk("chTop",{type:"bar",data:{labels:top.map(p=>cut(p.title)),datasets:[{data:top.map(p=>p.views),backgroundColor:"#5aa9e6",borderRadius:5}]},options:{...base,indexAxis:"y",plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.raw.toLocaleString("en-IN")+" views"}}},scales:{x:{ticks:{callback:v=>(v/1000)+"k"}}}}});
+  mk("chVerdict",{type:"doughnut",data:{labels:Object.keys(vc),datasets:[{data:Object.values(vc),backgroundColor:["#2e7d57","#d8af6a","#b13a2b"],borderWidth:0}]},options:{...base,cutout:"58%",plugins:{legend:{position:"bottom",labels:{boxWidth:10,padding:8}},datalabels:{color:"#fff",font:{weight:"700",size:13},formatter:v=>v>0?v:""}}}});
+  mk("chBucket",{type:"bar",data:{labels:bkE.map(e=>e[0]),datasets:[{data:bkE.map(e=>e[1]),backgroundColor:"#6f2da8",borderRadius:5}]},options:{...base,indexAxis:"y",plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>"\u20b9"+Math.round(c.raw).toLocaleString("en-IN")}},datalabels:{anchor:"end",align:"end",clamp:true,color:"#948a7c",font:{weight:"700",size:10.5},formatter:v=>"\u20b9"+Math.round(v).toLocaleString("en-IN")}},scales:{x:{grace:"16%",ticks:{callback:v=>"\u20b9"+Math.round(v/1000)+"k"}}}}});
+  mk("chTop",{type:"bar",data:{labels:top.map(p=>cut(p.title)),datasets:[{data:top.map(p=>p.views),backgroundColor:"#5aa9e6",borderRadius:5}]},options:{...base,indexAxis:"y",plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.raw.toLocaleString("en-IN")+" views"}},datalabels:{anchor:"end",align:"end",clamp:true,color:"#948a7c",font:{weight:"700",size:10.5},formatter:v=>v.toLocaleString("en-IN")}},scales:{x:{grace:"16%",ticks:{callback:v=>(v/1000)+"k"}}}}});
 }
 function bucketsAvailable(){ const base=windowed().filter(p=>{ if(state.fmt!=="all"&&p.format!==state.fmt) return false; if(state.camp!=="all"&&p.objective!==state.camp) return false; return true; }); return [...new Set(base.map(p=>p.bucket).filter(Boolean))].sort(); }
 function renderBucketChips(){ const av=bucketsAvailable(); if(state.bucket!=="all"&&!av.includes(state.bucket)) state.bucket="all"; const cur=state.bucket; document.getElementById("bucketChips").innerHTML='<button class="chip" data-bucket="all" aria-pressed="'+(cur==="all")+'" type="button">All buckets</button>'+av.map(b=>'<button class="chip" data-bucket="'+esc(b)+'" aria-pressed="'+(cur===b)+'" type="button">'+esc(b)+'</button>').join(""); }
