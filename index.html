@@ -72,7 +72,9 @@
   .tablecard{background:var(--surface);border:1px solid var(--line);border-radius:16px;overflow:hidden}
   .tablescroll{overflow-x:auto;max-height:640px;overflow-y:auto}
   table{width:100%;border-collapse:collapse;min-width:1180px}
-  thead th{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mute);font-weight:600;text-align:right;padding:18px 14px;border-bottom:1px solid var(--line);white-space:nowrap;background:var(--surface);position:sticky;top:0;z-index:1}
+  thead th{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mute);font-weight:600;text-align:right;padding:12px 14px;border-bottom:1px solid var(--line);white-space:nowrap;background:var(--surface);position:sticky;top:0;z-index:1}
+  thead th.h-group{text-align:center;padding:7px 14px;color:var(--ink-soft);border-bottom:1px solid var(--line)}
+  thead th.h-sub{top:30px;padding:7px 14px;font-size:10px;text-transform:none;letter-spacing:.02em}
   thead th.h-content{text-align:left;padding-left:26px} thead th.h-verdict{text-align:left;padding-right:26px}
   tbody td{padding:16px 14px;border-bottom:1px solid var(--line);font-size:14px;text-align:right;vertical-align:middle;font-variant-numeric:tabular-nums;color:var(--ink-soft)}
   tbody tr:last-child td{border-bottom:0} .prow:hover td{background:var(--surface-2)}
@@ -188,21 +190,26 @@
     </div>
   </div>
   <div class="tablecard"><div class="tablescroll"><table>
-    <thead><tr>
-      <th class="h-content">Content</th>
-      <th title="Money spent boosting this post">Spend</th>
-      <th title="People who saw it">Reach</th>
-      <th title="Number of plays / views">Views</th>
-      <th title="New profile follows from this post">Follows</th>
-      <th title="Total interactions (likes + comments + saves + shares)">Engagements</th>
-      <th title="Likes / reactions on the post">Likes</th>
-      <th title="Comments on the post">Comments</th>
-      <th title="Times the post was saved">Saves</th>
-      <th title="Times the post was shared">Shares</th>
-      <th title="Cost per view — what you paid for each view. Lower is better">CPV</th>
-      <th title="Cost per engagement — what you paid per interaction. Lower is better">CPE</th>
-      <th class="h-verdict">Verdict</th>
-    </tr></thead><tbody id="tbody"></tbody>
+    <thead>
+      <tr>
+        <th class="h-content" rowspan="2">Content</th>
+        <th rowspan="2" title="Money spent boosting this post">Spend</th>
+        <th rowspan="2" title="People who saw it">Reach</th>
+        <th rowspan="2" title="Number of plays / views">Views</th>
+        <th rowspan="2" title="New profile follows from this post">Follows</th>
+        <th class="h-group" colspan="5">Engagements</th>
+        <th rowspan="2" title="Cost per view — what you paid for each view. Lower is better">CPV</th>
+        <th rowspan="2" title="Cost per engagement — what you paid per interaction. Lower is better">CPE</th>
+        <th class="h-verdict" rowspan="2">Verdict</th>
+      </tr>
+      <tr>
+        <th class="h-sub" title="Total interactions">Total</th>
+        <th class="h-sub" title="Likes / reactions on the post">Likes</th>
+        <th class="h-sub" title="Comments on the post">Comments</th>
+        <th class="h-sub" title="Times the post was shared">Shares</th>
+        <th class="h-sub" title="Times the post was saved">Saves</th>
+      </tr>
+    </thead><tbody id="tbody"></tbody>
   </table></div></div>
   <p class="caption" id="emptyNote" hidden><span class="dot"></span> No content matches these filters.</p>
   <p class="action-note-disclaimer">Verdicts are based on engagement efficiency (CPV &amp; CPE) vs the average of pieces shown &mdash; not lead or revenue outcomes. Lead campaigns are excluded. Hover any column heading to see what it measures.</p>
@@ -254,7 +261,7 @@ function renderTable(){
     const campCls=p.objective==="Traffic"?"camp-boost":"camp-eng";
     const cpvCls=p.cpv==null?"":(p.cpv<=avgCPV?"green":"red");
     const cpeCls=p.cpe==null?"":(p.cpe<=avgCPE?"green":"red");
-    return `<tr class="prow ${p.verdict==='Profitable'?'v-green':p.verdict==='Loss-making'?'v-red':p.verdict==='Broke even'?'v-amber':''}"><td class="c-content"><div class="cwrap"><div class="cmeta"><div class="ctitle">${esc(p.title)}</div></div></div></td><td class="num" data-label="Spend">${spendF(p.spend)}</td><td class="num" data-label="Reach">${intF(p.reach)}</td><td class="num" data-label="Views">${intF(p.views)}</td><td class="num" data-label="Follows">${intF(p.follows)}</td><td class="num" data-label="Engagements">${intF(p.engagements)}</td><td class="num" data-label="Likes">${intF(p.likes)}</td><td class="num" data-label="Comments">${intF(p.comments)}</td><td class="num" data-label="Saves">${intF(p.saves)}</td><td class="num" data-label="Shares">${intF(p.shares)}</td><td class="eff ${cpvCls}" data-label="CPV">${cpvF(p.cpv)}</td><td class="eff ${cpeCls}" data-label="CPE">${cpeF(p.cpe)}</td><td class="c-verdict"><span class="pill ${vClass(p.verdict)}">${p.verdict||"No spend"}</span><div class="reason">${vReason(p.verdict)}</div></td></tr>`;
+    return `<tr class="prow ${p.verdict==='Profitable'?'v-green':p.verdict==='Loss-making'?'v-red':p.verdict==='Broke even'?'v-amber':''}"><td class="c-content"><div class="cwrap"><div class="cmeta"><div class="ctitle">${esc(p.title)}</div></div></div></td><td class="num" data-label="Spend">${spendF(p.spend)}</td><td class="num" data-label="Reach">${intF(p.reach)}</td><td class="num" data-label="Views">${intF(p.views)}</td><td class="num" data-label="Follows">${intF(p.follows)}</td><td class="num" data-label="Engagements">${intF(p.engagements)}</td><td class="num" data-label="Likes">${intF(p.likes)}</td><td class="num" data-label="Comments">${intF(p.comments)}</td><td class="num" data-label="Shares">${intF(p.shares)}</td><td class="num" data-label="Saves">${intF(p.saves)}</td><td class="eff ${cpvCls}" data-label="CPV">${cpvF(p.cpv)}</td><td class="eff ${cpeCls}" data-label="CPE">${cpeF(p.cpe)}</td><td class="c-verdict"><span class="pill ${vClass(p.verdict)}">${p.verdict||"No spend"}</span><div class="reason">${vReason(p.verdict)}</div></td></tr>`;
   }).join("");
   document.getElementById("emptyNote").hidden = rows.length>0;
 }
