@@ -90,6 +90,9 @@
   img.thumb{width:48px;height:48px;object-fit:contain;display:block;background:var(--surface-2)}
   .cmeta{min-width:0} .ctitle{font-size:14.5px;font-weight:600;color:var(--ink);line-height:1.25}
   .cdate{font-size:11.5px;color:var(--ink-mute);margin-top:3px}
+  .csub{font-size:11.5px;color:var(--ink-mute);margin-top:4px}
+  .csub .cdot{margin:0 5px;color:var(--line-strong)}
+  .cstatus.on{color:var(--ok-green);font-weight:600} .cstatus.off{color:var(--ink-mute)}
   thead th.h-date{text-align:left} td.c-datecol{text-align:left;color:var(--ink-soft);white-space:nowrap}
   .badges{display:flex;gap:6px;margin-top:6px}
   .badge{font-size:11px;font-weight:600;padding:2px 8px;border-radius:6px;white-space:nowrap}
@@ -267,7 +270,7 @@ function renderTable(){
     const campCls=p.objective==="Traffic"?"camp-boost":"camp-eng";
     const cpvCls=p.cpv==null?"":(p.cpv<=avgCPV?"green":"red");
     const cpeCls=p.cpe==null?"":(p.cpe<=avgCPE?"green":"red");
-    return `<tr class="prow ${p.verdict==='Profitable'?'v-green':p.verdict==='Loss-making'?'v-red':p.verdict==='Broke even'?'v-amber':''}"><td class="c-content"><div class="cwrap"><div class="cmeta"><div class="ctitle">${esc(p.title)}</div></div></div></td><td class="c-datecol" data-label="Date Started">${dlong(p.date)}</td><td class="num" data-label="Spend">${spendF(p.spend)}</td><td class="num" data-label="Reach">${intF(p.reach)}</td><td class="num" data-label="Views">${intF(p.views)}</td><td class="num" data-label="Follows">${intF(p.follows)}</td><td class="num" data-label="Engagements">${intF(p.engagements)}</td><td class="num" data-label="Likes">${intF(p.likes)}</td><td class="num" data-label="Comments">${intF(p.comments)}</td><td class="num" data-label="Shares">${intF(p.shares)}</td><td class="num" data-label="Saves">${intF(p.saves)}</td><td class="num" data-label="CPV">${p.cpv==null?'<span class="muted">\u2014</span>':('<span class="cellpill '+cpvCls+'">'+cpvF(p.cpv)+'</span>')}</td><td class="num" data-label="CPE">${p.cpe==null?'<span class="muted">\u2014</span>':('<span class="cellpill '+cpeCls+'">'+cpeF(p.cpe)+'</span>')}</td></tr>`;
+    return `<tr class="prow ${p.verdict==='Profitable'?'v-green':p.verdict==='Loss-making'?'v-red':p.verdict==='Broke even'?'v-amber':''}"><td class="c-content"><div class="cwrap"><div class="cmeta"><div class="ctitle">${esc(p.title)}</div><div class="csub">${esc(p.format||"")} <span class="cdot">\u00b7</span> <span class="cstatus ${p.status==='Active'?'on':'off'}">${esc(p.status||"")}</span></div></div></div></td><td class="c-datecol" data-label="Date Started">${dlong(p.date)}</td><td class="num" data-label="Spend">${spendF(p.spend)}</td><td class="num" data-label="Reach">${intF(p.reach)}</td><td class="num" data-label="Views">${intF(p.views)}</td><td class="num" data-label="Follows">${intF(p.follows)}</td><td class="num" data-label="Engagements">${intF(p.engagements)}</td><td class="num" data-label="Likes">${intF(p.likes)}</td><td class="num" data-label="Comments">${intF(p.comments)}</td><td class="num" data-label="Shares">${intF(p.shares)}</td><td class="num" data-label="Saves">${intF(p.saves)}</td><td class="num" data-label="CPV">${p.cpv==null?'<span class="muted">\u2014</span>':('<span class="cellpill '+cpvCls+'">'+cpvF(p.cpv)+'</span>')}</td><td class="num" data-label="CPE">${p.cpe==null?'<span class="muted">\u2014</span>':('<span class="cellpill '+cpeCls+'">'+cpeF(p.cpe)+'</span>')}</td></tr>`;
   }).join("");
   document.getElementById("emptyNote").hidden = rows.length>0;
 }
