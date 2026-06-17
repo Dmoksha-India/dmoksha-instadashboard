@@ -50,6 +50,7 @@
   .tile-value .unit{font-family:var(--sans);font-size:.42em;font-weight:500;color:var(--ink-mute);margin-left:5px}
   .tile.accent .tile-value{color:var(--purple)} .tile.bled .tile-value{color:var(--ok-red)}
   .tile-foot{font-size:12.5px;color:var(--ink-mute);margin:12px 0 0;line-height:1.45}
+  .splitrow{display:block} .splitrow+.splitrow{margin-top:4px} .tile-foot i{font-style:normal;color:var(--ink-mute);font-size:11.5px}
   .tile-foot b{color:var(--ink-soft);font-weight:600} .tile-foot .sep{color:var(--line-strong);margin:0 7px}
   .tile-best{font-size:14px;color:var(--ink);font-weight:500;margin:12px 0 0}
   .tile.engbox{min-height:0;padding:18px 14px}
@@ -152,8 +153,8 @@
   
   <p class="section-eyebrow">Boost spend</p>
   <section class="tiles">
-    <article class="tile"><p class="tile-label">Total boost spend</p><div class="tile-value" id="t-spend">&mdash;</div><p class="tile-foot" id="t-split">&mdash;</p></article>
     <article class="tile"><p class="tile-label">Pieces boosted</p><div class="tile-value" id="t-count">&mdash;</div><p class="tile-foot" id="t-count-foot">&mdash;</p></article>
+    <article class="tile"><p class="tile-label">Total boost spend</p><div class="tile-value" id="t-spend">&mdash;</div><p class="tile-foot" id="t-split">&mdash;</p></article>
     <article class="tile engbox" style="grid-column:span 2"><p class="tile-label">Engagement</p><div class="engstats" id="engStats"></div></article>
   </section>
   <p class="section-eyebrow">At a glance</p>
@@ -237,7 +238,7 @@ function renderTiles(){
   const sT=boosted.filter(p=>p.objective==="Traffic").reduce((a,b)=>a+(b.spend||0),0);
   const sE=boosted.filter(p=>p.objective==="Engagement").reduce((a,b)=>a+(b.spend||0),0);
   document.getElementById("t-spend").textContent=spendF(total);
-  document.getElementById("t-split").innerHTML=`<b>${spendF(sT)}</b> traffic <span class="sep">·</span> <b>${spendF(sE)}</b> engagement`;
+  document.getElementById("t-split").innerHTML=`<span class="splitrow"><b>${spendF(sT)}</b> Traffic <i>\u2014 boosts for clicks &amp; profile visits</i></span><span class="splitrow"><b>${spendF(sE)}</b> Engagement <i>\u2014 for likes, comments &amp; shares</i></span>`;
   document.getElementById("t-count").textContent=boosted.length;
   document.getElementById("t-count-foot").innerHTML=`of <b>${w.length}</b> pieces in view`;
   const sumK=k=>w.reduce((a,b)=>a+(b[k]||0),0);
