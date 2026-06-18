@@ -1,20 +1,20 @@
 {
   "meta": {
     "source": "Meta Ads export (Engagement + Traffic only) · via Import tab",
-    "generatedAt": "2026-06-17T06:54:23Z",
+    "generatedAt": "2026-06-18T07:21:25Z",
     "currency": "INR",
     "note": "Lead campaigns excluded; duplicate rows removed automatically."
   },
   "summary": {
-    "pieces": 66,
-    "boosted": 66,
-    "totalSpend": 27839.44,
-    "spendTraffic": 5888.3,
+    "pieces": 68,
+    "boosted": 68,
+    "totalSpend": 27911.31,
+    "spendTraffic": 5960.17,
     "spendEngagement": 21951.14,
-    "avgCPV": 0.024822,
-    "avgCPE": 0.259582,
-    "profitable": 34,
-    "brokeEven": 19,
+    "avgCPV": 0.024583,
+    "avgCPE": 0.260863,
+    "profitable": 33,
+    "brokeEven": 22,
     "lossMaking": 13
   },
   "pieces": [
@@ -151,7 +151,7 @@
       "hookRate": 0.104852,
       "engRate": 0.224079,
       "image": null,
-      "verdict": "Profitable"
+      "verdict": "Broke even"
     },
     {
       "title": "Expert Opinion_Rods Vs Pelemets",
@@ -421,7 +421,7 @@
       "hookRate": 0.059405,
       "engRate": 0.150089,
       "image": "images/Testimonial_Vipul.png",
-      "verdict": "Profitable"
+      "verdict": "Broke even"
     },
     {
       "title": "Testimonial_Bindiya",
@@ -1770,6 +1770,60 @@
       "shareRate": 0.0,
       "hookRate": 0.388477,
       "engRate": 0.415859,
+      "image": null,
+      "verdict": "Profitable"
+    },
+    {
+      "title": "Fast Reel_Unlock Your D'Mokhsa Home",
+      "format": "Reel",
+      "bucket": "Fast Reel",
+      "objective": "Traffic",
+      "date": "2026-06-17",
+      "month": "Jun 2026",
+      "boosted": true,
+      "spend": 39.19,
+      "reach": 1623.0,
+      "views": 1614.0,
+      "engagements": 77.0,
+      "saves": 1.0,
+      "shares": 0.0,
+      "follows": 0.0,
+      "likes": 6.0,
+      "comments": 0.0,
+      "status": "Active",
+      "cpv": 0.024281,
+      "cpe": 0.508961,
+      "saveRate": 0.000616,
+      "shareRate": 0.0,
+      "hookRate": 0.037585,
+      "engRate": 0.047443,
+      "image": null,
+      "verdict": "Broke even"
+    },
+    {
+      "title": "Fast Reel_Unseen Hands Behind Your Curtains",
+      "format": "Reel",
+      "bucket": "Fast Reel",
+      "objective": "Traffic",
+      "date": "2026-06-17",
+      "month": "Jun 2026",
+      "boosted": true,
+      "spend": 32.68,
+      "reach": 3190.0,
+      "views": 3165.0,
+      "engagements": 336.0,
+      "saves": 0.0,
+      "shares": 1.0,
+      "follows": 1.0,
+      "likes": 4.0,
+      "comments": 0.0,
+      "status": "Active",
+      "cpv": 0.010325,
+      "cpe": 0.097262,
+      "saveRate": 0.0,
+      "shareRate": 0.000313,
+      "hookRate": 0.098746,
+      "engRate": 0.105329,
       "image": null,
       "verdict": "Profitable"
     },
