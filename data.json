@@ -1,21 +1,21 @@
 {
   "meta": {
     "source": "Meta Ads export (Engagement + Traffic only) · via Import tab",
-    "generatedAt": "2026-06-18T07:21:25Z",
+    "generatedAt": "2026-06-19T05:18:30Z",
     "currency": "INR",
     "note": "Lead campaigns excluded; duplicate rows removed automatically."
   },
   "summary": {
-    "pieces": 68,
-    "boosted": 68,
-    "totalSpend": 27911.31,
-    "spendTraffic": 5960.17,
+    "pieces": 69,
+    "boosted": 69,
+    "totalSpend": 28020.14,
+    "spendTraffic": 6069.0,
     "spendEngagement": 21951.14,
-    "avgCPV": 0.024583,
-    "avgCPE": 0.260863,
+    "avgCPV": 0.024569,
+    "avgCPE": 0.264929,
     "profitable": 33,
-    "brokeEven": 22,
-    "lossMaking": 13
+    "brokeEven": 24,
+    "lossMaking": 12
   },
   "pieces": [
     {
@@ -1420,7 +1420,7 @@
       "hookRate": 0.183473,
       "engRate": 0.216989,
       "image": null,
-      "verdict": "Loss-making"
+      "verdict": "Broke even"
     },
     {
       "title": "AI Reel_Trending Color Pairings of 2026",
@@ -1745,6 +1745,33 @@
       "engRate": 0.493319,
       "image": null,
       "verdict": "Profitable"
+    },
+    {
+      "title": "Testimonial_Kedar Lele Marathi",
+      "format": "Reel",
+      "bucket": "Testimonial",
+      "objective": "Traffic",
+      "date": "2026-06-17",
+      "month": "Jun 2026",
+      "boosted": true,
+      "spend": 108.83,
+      "reach": 4563.0,
+      "views": 4603.0,
+      "engagements": 201.0,
+      "saves": 1.0,
+      "shares": 3.0,
+      "follows": 0.0,
+      "likes": 19.0,
+      "comments": 0.0,
+      "status": "Active",
+      "cpv": 0.023643,
+      "cpe": 0.541443,
+      "saveRate": 0.000219,
+      "shareRate": 0.000657,
+      "hookRate": 0.035065,
+      "engRate": 0.04405,
+      "image": null,
+      "verdict": "Broke even"
     },
     {
       "title": "Expert Opinion: Curtain Care Instructions",
