@@ -228,11 +228,11 @@
   <p class="caption" id="emptyNote" hidden><span class="dot"></span> No content matches these filters.</p>
   <p class="action-note-disclaimer">Verdicts are based on engagement efficiency (CPV &amp; CPE) vs the average of pieces shown &mdash; not lead or revenue outcomes. Lead campaigns are excluded. Hover any column heading to see what it measures.</p>
   <div class="legend-rule">
-    <span class="lg"><span class="lgdot green"></span>Profitable = CPV &le; <b id="thCpv">—</b> <em>and</em> CPE &le; <b id="thCpe">—</b></span>
+    <span class="lg"><span class="lgdot green"></span>Profitable = CPV &le; <b class="th-cpv">—</b> <em>and</em> CPE &le; <b class="th-cpe">—</b></span>
     <span class="lgsep">&middot;</span>
-    <span class="lg"><span class="lgdot amber"></span>Broke even = one at/below, one above</span>
+    <span class="lg"><span class="lgdot amber"></span>Broke even = CPV &le; <b class="th-cpv">—</b> <em>or</em> CPE &le; <b class="th-cpe">—</b> (only one)</span>
     <span class="lgsep">&middot;</span>
-    <span class="lg"><span class="lgdot red"></span>Loss-making = CPV &amp; CPE both above</span>
+    <span class="lg"><span class="lgdot red"></span>Loss-making = CPV &gt; <b class="th-cpv">—</b> <em>and</em> CPE &gt; <b class="th-cpe">—</b></span>
     <span class="lgsep">&middot;</span><span class="lg">cut-offs = the average of pieces shown; lower cost is better</span>
   </div>
   <p class="caption" id="metaLine" style="margin-top:24px"></p>
@@ -308,8 +308,8 @@ function render(d){
   DATA=d;
   document.getElementById("windowNote").textContent=`${d.summary.boosted} boosted pieces · updated ${new Date(d.meta.generatedAt).toLocaleDateString("en-IN")}`;
   document.getElementById("metaLine").innerHTML=`<span class="dot"></span> Source: ${esc(d.meta.source)} — ${esc(d.meta.note||"")}`;
-  if(d.summary.avgCPV!=null) document.getElementById("thCpv").textContent="₹"+d.summary.avgCPV.toFixed(3);
-  if(d.summary.avgCPE!=null) document.getElementById("thCpe").textContent="₹"+d.summary.avgCPE.toFixed(2);
+  if(d.summary.avgCPV!=null) document.querySelectorAll(".th-cpv").forEach(el=>el.textContent="₹"+d.summary.avgCPV.toFixed(3));
+  if(d.summary.avgCPE!=null) document.querySelectorAll(".th-cpe").forEach(el=>el.textContent="₹"+d.summary.avgCPE.toFixed(2));
   bindChips("fmtChips","fmt"); bindChips("campChips","camp"); bindChips("bucketChips","bucket"); bindChips("statusChips","status");
   document.querySelector("table thead").addEventListener("click",e=>{ const th=e.target.closest("th[data-sort]"); if(!th) return; if(state.sort===th.dataset.sort) state.sortDir=-state.sortDir; else { state.sort=th.dataset.sort; state.sortDir=-1; } updateSortUI(); renderTable(); }); updateSortUI();
   
