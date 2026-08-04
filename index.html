@@ -113,7 +113,8 @@
   .legend-rule{margin-top:16px;font-size:12.5px;color:var(--ink-mute);display:flex;gap:11px;flex-wrap:wrap;align-items:center}
   .legend-rule .lg{display:inline-flex;align-items:center;gap:7px}
   .legend-rule .lgdot{width:8px;height:8px;border-radius:50%;flex:none}
-  .legend-rule .lgdot.green{background:var(--ok-green)} .legend-rule .lgdot.red{background:var(--ok-red)} .legend-rule .lgsep{color:var(--line-strong)}
+  .legend-rule .lgdot.green{background:var(--ok-green)} .legend-rule .lgdot.red{background:var(--ok-red)} .legend-rule .lgdot.amber{background:#d8af6a} .legend-rule .lgsep{color:var(--line-strong)}
+  .legend-rule b{color:var(--ink);font-weight:700} .legend-rule em{font-style:normal;color:var(--ink-mute)}
   .action-note-disclaimer{margin:14px 0 0;font-size:12px;color:var(--ink-mute);font-style:italic;display:flex;align-items:baseline;gap:8px}
   .action-note-disclaimer::before{content:"\2192";font-style:normal;color:var(--purple)}
   @media (max-width:900px){.page{padding:28px 22px 64px}.tiles{grid-template-columns:repeat(2,1fr)}}
@@ -227,10 +228,12 @@
   <p class="caption" id="emptyNote" hidden><span class="dot"></span> No content matches these filters.</p>
   <p class="action-note-disclaimer">Verdicts are based on engagement efficiency (CPV &amp; CPE) vs the average of pieces shown &mdash; not lead or revenue outcomes. Lead campaigns are excluded. Hover any column heading to see what it measures.</p>
   <div class="legend-rule">
-    <span class="lg"><span class="lgdot green"></span>Profitable = low CPV &amp; CPE</span>
+    <span class="lg"><span class="lgdot green"></span>Profitable = CPV &le; <b id="thCpv">—</b> <em>and</em> CPE &le; <b id="thCpe">—</b></span>
     <span class="lgsep">&middot;</span>
-    <span class="lg"><span class="lgdot red"></span>Loss-making = high CPV &amp; CPE</span>
-    <span class="lgsep">&middot;</span><span class="lg">judged against the average of pieces shown</span>
+    <span class="lg"><span class="lgdot amber"></span>Broke even = one at/below, one above</span>
+    <span class="lgsep">&middot;</span>
+    <span class="lg"><span class="lgdot red"></span>Loss-making = CPV &amp; CPE both above</span>
+    <span class="lgsep">&middot;</span><span class="lg">cut-offs = the average of pieces shown; lower cost is better</span>
   </div>
   <p class="caption" id="metaLine" style="margin-top:24px"></p>
 </main>
@@ -305,6 +308,8 @@ function render(d){
   DATA=d;
   document.getElementById("windowNote").textContent=`${d.summary.boosted} boosted pieces · updated ${new Date(d.meta.generatedAt).toLocaleDateString("en-IN")}`;
   document.getElementById("metaLine").innerHTML=`<span class="dot"></span> Source: ${esc(d.meta.source)} — ${esc(d.meta.note||"")}`;
+  if(d.summary.avgCPV!=null) document.getElementById("thCpv").textContent="₹"+d.summary.avgCPV.toFixed(3);
+  if(d.summary.avgCPE!=null) document.getElementById("thCpe").textContent="₹"+d.summary.avgCPE.toFixed(2);
   bindChips("fmtChips","fmt"); bindChips("campChips","camp"); bindChips("bucketChips","bucket"); bindChips("statusChips","status");
   document.querySelector("table thead").addEventListener("click",e=>{ const th=e.target.closest("th[data-sort]"); if(!th) return; if(state.sort===th.dataset.sort) state.sortDir=-state.sortDir; else { state.sort=th.dataset.sort; state.sortDir=-1; } updateSortUI(); renderTable(); }); updateSortUI();
   
