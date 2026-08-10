@@ -159,6 +159,7 @@
   .tabnav .tab.on{background:var(--purple);color:var(--purple-ink);border-color:var(--purple);font-weight:600}
   .tabnav .tab.disabled{opacity:.45;cursor:default}
   #view-funnel .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:2px}
+  #view-funnel .eff3{grid-template-columns:repeat(3,1fr)}
   #view-funnel .fcard{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px}
   #view-funnel .fcard .k{font-size:12.5px;font-weight:700;color:var(--ink)}
   #view-funnel .fcard .h{font-size:11px;color:var(--ink-mute);margin-top:1px}
@@ -201,8 +202,6 @@
   <nav class="tabnav" id="tabnav">
     <button class="tab on" data-tab="content" type="button">Content performance</button>
     <button class="tab" data-tab="funnel" type="button">Leads &amp; funnel</button>
-    <span class="tab disabled" title="Coming soon">Formats</span>
-    <span class="tab disabled" title="Coming soon">Campaigns</span>
   </nav>
   <div id="view-content">
   <div class="windowbar">
@@ -283,7 +282,7 @@
     <p class="section-eyebrow">Headline</p>
     <div class="cards" id="f-headline"></div>
     <p class="section-eyebrow">Efficiency</p>
-    <div class="cards" id="f-efficiency"></div>
+    <div class="cards eff3" id="f-efficiency"></div>
     <p class="section-eyebrow">Funnel</p>
     <div class="funnelbox">
       <div class="fhead"><h3>Lead to close</h3><div class="fhint">Each stage shows its count &amp; the % carried over from the stage above.</div></div>
@@ -391,7 +390,7 @@ catch(e){ document.querySelector(".page").insertAdjacentHTML("beforeend",`<p sty
       cr=FD.leads?FD.closed/FD.leads:0, avg=FD.closed?FD.revenue/FD.closed:0;
   var head=[["Ad spend","Instagram boosts",rupee(FD.adSpend),0],["Leads received","Top of funnel",FD.leads.toLocaleString("en-IN"),0],
       ["Deals closed","Completed",FD.closed.toLocaleString("en-IN"),0],["Revenue","Booked value",rupeeL(FD.revenue),1]];
-  var eff=[["ROAS","₹ back per ₹ spent",roas.toFixed(1)+"×",0],["Cost per lead","Spend ÷ leads",rupee(cpl),0],
+  var eff=[["ROAS","₹ back per ₹ spent",roas.toFixed(1)+"×",0],
       ["Lead → close rate","Closed ÷ leads",Math.round(cr*100)+"%",0],["Avg deal value","Revenue ÷ deals",rupee(avg),0]];
   var card=function(c){return '<div class="fcard"><div class="k">'+c[0]+'</div><div class="h">'+c[1]+'</div><div class="v '+(c[3]?'pur':'')+'">'+c[2]+'</div></div>';};
   document.getElementById('f-headline').innerHTML=head.map(card).join('');
