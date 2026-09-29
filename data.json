@@ -1,7 +1,7 @@
 {
   "meta": {
     "source": "Meta Ads export (Engagement + Traffic only) · via Import tab",
-    "generatedAt": "2026-09-29T08:28:47Z",
+    "generatedAt": "2026-09-29T08:34:58Z",
     "currency": "INR",
     "note": "Lead campaigns excluded; duplicate rows removed automatically."
   },
@@ -1398,7 +1398,7 @@
     {
       "title": "When curtains don’t feel right,...",
       "format": "Static",
-      "bucket": "Uncategorized",
+      "bucket": "Testimonial",
       "objective": "Traffic",
       "date": "2026-05-17",
       "month": "May 2026",
@@ -2127,7 +2127,7 @@
     {
       "title": "Curtains, but done right ✨",
       "format": "Static",
-      "bucket": "Uncategorized",
+      "bucket": "Fast Reel",
       "objective": "Traffic",
       "date": "2026-05-06",
       "month": "May 2026",
@@ -2208,7 +2208,7 @@
     {
       "title": "Textures that don’t just sit in...",
       "format": "Static",
-      "bucket": "Uncategorized",
+      "bucket": "Carousel",
       "objective": "Traffic",
       "date": "2026-04-30",
       "month": "Apr 2026",
@@ -2235,7 +2235,7 @@
     {
       "title": "If you’re still opening your...",
       "format": "Static",
-      "bucket": "Uncategorized",
+      "bucket": "AI Reel",
       "objective": "Traffic",
       "date": "2026-05-06",
       "month": "May 2026",
@@ -2316,7 +2316,7 @@
     {
       "title": "Unlock your D’Moksha Home ✨",
       "format": "Static",
-      "bucket": "Uncategorized",
+      "bucket": "AI Reel",
       "objective": "Traffic",
       "date": "2026-06-17",
       "month": "Jun 2026",
@@ -2667,7 +2667,7 @@
     {
       "title": "Curtains that don’t just fill a...",
       "format": "Static",
-      "bucket": "Uncategorized",
+      "bucket": "Testimonial",
       "objective": "Traffic",
       "date": "2026-04-28",
       "month": "Apr 2026",
@@ -2802,7 +2802,7 @@
     {
       "title": "If you can read this… your home...",
       "format": "Static",
-      "bucket": "Uncategorized",
+      "bucket": "Static",
       "objective": "Traffic",
       "date": "2026-04-28",
       "month": "Apr 2026",
@@ -2829,7 +2829,7 @@
     {
       "title": "100/100… every single time 💜...",
       "format": "Static",
-      "bucket": "Uncategorized",
+      "bucket": "Fast Reel",
       "objective": "Traffic",
       "date": "2026-04-28",
       "month": "Apr 2026",
@@ -3072,7 +3072,7 @@
     {
       "title": "When “curtain ho gaya?” becomes...",
       "format": "Static",
-      "bucket": "Uncategorized",
+      "bucket": "Fast Reel",
       "objective": "Traffic",
       "date": "2026-06-09",
       "month": "Jun 2026",
@@ -3342,7 +3342,7 @@
     {
       "title": "Prepping tor my Nettlix...",
       "format": "Static",
-      "bucket": "Uncategorized",
+      "bucket": "Fast Reel",
       "objective": "Traffic",
       "date": "2026-08-13",
       "month": "Aug 2026",
@@ -3423,7 +3423,7 @@
     {
       "title": "It started in Mumbai. ✨",
       "format": "Static",
-      "bucket": "Uncategorized",
+      "bucket": "Fast Reel",
       "objective": "Traffic",
       "date": "2026-08-13",
       "month": "Aug 2026",
