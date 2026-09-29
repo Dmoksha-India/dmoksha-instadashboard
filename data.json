@@ -1,7 +1,7 @@
 {
   "meta": {
     "source": "Meta Ads export (Engagement + Traffic only) · via Import tab",
-    "generatedAt": "2026-09-29T08:18:29Z",
+    "generatedAt": "2026-09-29T08:28:47Z",
     "currency": "INR",
     "note": "Lead campaigns excluded; duplicate rows removed automatically."
   },
@@ -208,7 +208,7 @@
       "verdict": "Broke even"
     },
     {
-      "title": "Expert Opinion_Manav_Biggest Mistake While Designing The House?",
+      "title": "Expert Opinion_Manav_Biggest Mistake While Designing The Hou",
       "format": "Reel",
       "bucket": "Expert Opinion",
       "objective": "Engagement",
@@ -1153,7 +1153,7 @@
       "verdict": "Profitable"
     },
     {
-      "title": "Instagram post: Something big is coming soon… 👀✨...",
+      "title": "Something big is coming soon… 👀✨...",
       "format": "Static",
       "bucket": "Uncategorized",
       "objective": "Traffic",
@@ -1396,7 +1396,7 @@
       "verdict": "Profitable"
     },
     {
-      "title": "Instagram post: When curtains don’t feel right,...",
+      "title": "When curtains don’t feel right,...",
       "format": "Static",
       "bucket": "Uncategorized",
       "objective": "Traffic",
@@ -1668,7 +1668,7 @@
     {
       "title": "Pune_We are Live",
       "format": "Reel",
-      "bucket": "Uncategorized",
+      "bucket": "Pune",
       "objective": "Engagement",
       "date": "2026-09-23",
       "month": "Sep 2026",
@@ -2125,7 +2125,7 @@
       "verdict": "Broke even"
     },
     {
-      "title": "Instagram post: Curtains, but done right ✨\n\nFrom...",
+      "title": "Curtains, but done right ✨",
       "format": "Static",
       "bucket": "Uncategorized",
       "objective": "Traffic",
@@ -2152,7 +2152,7 @@
       "verdict": "Broke even"
     },
     {
-      "title": "Instagram post: Are you coming? 👀\nWhere? We’ll...",
+      "title": "Are you coming? 👀",
       "format": "Static",
       "bucket": "Uncategorized",
       "objective": "Traffic",
@@ -2179,7 +2179,7 @@
       "verdict": "Profitable"
     },
     {
-      "title": "Instagram post: Home should feel like you 🤍\n\nFor...",
+      "title": "Home should feel like you 🤍",
       "format": "Static",
       "bucket": "Uncategorized",
       "objective": "Traffic",
@@ -2206,7 +2206,7 @@
       "verdict": "Broke even"
     },
     {
-      "title": "Instagram post: Textures that don’t just sit in...",
+      "title": "Textures that don’t just sit in...",
       "format": "Static",
       "bucket": "Uncategorized",
       "objective": "Traffic",
@@ -2233,7 +2233,7 @@
       "verdict": "Loss-making"
     },
     {
-      "title": "Instagram post: If you’re still opening your...",
+      "title": "If you’re still opening your...",
       "format": "Static",
       "bucket": "Uncategorized",
       "objective": "Traffic",
@@ -2260,7 +2260,7 @@
       "verdict": "Broke even"
     },
     {
-      "title": "Instagram post: Beautiful homes, blessed...",
+      "title": "Beautiful homes, blessed...",
       "format": "Static",
       "bucket": "Uncategorized",
       "objective": "Traffic",
@@ -2314,7 +2314,7 @@
       "verdict": "Profitable"
     },
     {
-      "title": "Instagram post: Unlock your D’Moksha Home ✨\n\nSoft...",
+      "title": "Unlock your D’Moksha Home ✨",
       "format": "Static",
       "bucket": "Uncategorized",
       "objective": "Traffic",
@@ -2395,7 +2395,7 @@
       "verdict": "Broke even"
     },
     {
-      "title": "Instagram post: Grey skies outside, a softer...",
+      "title": "Grey skies outside, a softer...",
       "format": "Static",
       "bucket": "Uncategorized",
       "objective": "Traffic",
@@ -2422,9 +2422,9 @@
       "verdict": "Loss-making"
     },
     {
-      "title": "Instagram post: Introducing Bachpan 🌈✨\n\nA playful...",
+      "title": "Introducing Bachpan 🌈✨",
       "format": "Static",
-      "bucket": "Uncategorized",
+      "bucket": "AI Reel",
       "objective": "Traffic",
       "date": "2026-05-10",
       "month": "May 2026",
@@ -2476,9 +2476,9 @@
       "verdict": "Profitable"
     },
     {
-      "title": "Instagram post: Your go-to cafe drink… but make...",
+      "title": "Your go-to cafe drink… but make...",
       "format": "Static",
-      "bucket": "Uncategorized",
+      "bucket": "AI Reel",
       "objective": "Traffic",
       "date": "2026-06-03",
       "month": "Jun 2026",
@@ -2530,7 +2530,7 @@
       "verdict": "Broke even"
     },
     {
-      "title": "Instagram post: Stitched with love, crafted with...",
+      "title": "Stitched with love, crafted with...",
       "format": "Static",
       "bucket": "Uncategorized",
       "objective": "Traffic",
@@ -2611,7 +2611,7 @@
       "verdict": "Profitable"
     },
     {
-      "title": "Instagram post: After putting so much thought...",
+      "title": "After putting so much thought...",
       "format": "Static",
       "bucket": "Uncategorized",
       "objective": "Traffic",
@@ -2638,7 +2638,7 @@
       "verdict": "Broke even"
     },
     {
-      "title": "Instagram post: So, you’re interested? 👀✨\n\nHere...",
+      "title": "So, you’re interested? 👀✨",
       "format": "Static",
       "bucket": "Uncategorized",
       "objective": "Traffic",
@@ -2665,7 +2665,7 @@
       "verdict": "Loss-making"
     },
     {
-      "title": "Instagram post: Curtains that don’t just fill a...",
+      "title": "Curtains that don’t just fill a...",
       "format": "Static",
       "bucket": "Uncategorized",
       "objective": "Traffic",
@@ -2692,9 +2692,9 @@
       "verdict": "Broke even"
     },
     {
-      "title": "Instagram post: There’s magic in the process...",
+      "title": "There’s magic in the process...",
       "format": "Static",
-      "bucket": "Uncategorized",
+      "bucket": "Proposition",
       "objective": "Traffic",
       "date": "2026-06-25",
       "month": "Jun 2026",
@@ -2746,7 +2746,7 @@
       "verdict": "Profitable"
     },
     {
-      "title": "Instagram post: When something as simple as...",
+      "title": "When something as simple as...",
       "format": "Static",
       "bucket": "Uncategorized",
       "objective": "Traffic",
@@ -2773,7 +2773,7 @@
       "verdict": "Broke even"
     },
     {
-      "title": "Instagram post: Why do you do this?\n\nBecause we...",
+      "title": "Why do you do this?",
       "format": "Static",
       "bucket": "Uncategorized",
       "objective": "Traffic",
@@ -2800,7 +2800,7 @@
       "verdict": "Profitable"
     },
     {
-      "title": "Instagram post: If you can read this… your home...",
+      "title": "If you can read this… your home...",
       "format": "Static",
       "bucket": "Uncategorized",
       "objective": "Traffic",
@@ -2827,7 +2827,7 @@
       "verdict": "Broke even"
     },
     {
-      "title": "Instagram post: 100/100… every single time 💜...",
+      "title": "100/100… every single time 💜...",
       "format": "Static",
       "bucket": "Uncategorized",
       "objective": "Traffic",
@@ -2854,7 +2854,7 @@
       "verdict": "Broke even"
     },
     {
-      "title": "Instagram post: We’ve been building, growing, and...",
+      "title": "We’ve been building, growing, and...",
       "format": "Static",
       "bucket": "Uncategorized",
       "objective": "Traffic",
@@ -2908,7 +2908,7 @@
       "verdict": "Broke even"
     },
     {
-      "title": "Instagram post: Curtain shopping is confusing? We...",
+      "title": "Curtain shopping is confusing? We...",
       "format": "Static",
       "bucket": "Uncategorized",
       "objective": "Traffic",
@@ -2962,9 +2962,9 @@
       "verdict": "Broke even"
     },
     {
-      "title": "Instagram post: Don’t post your work, post...",
+      "title": "Don’t post your work, post...",
       "format": "Static",
-      "bucket": "Uncategorized",
+      "bucket": "Fast Reel",
       "objective": "Traffic",
       "date": "2026-06-25",
       "month": "Jun 2026",
@@ -3043,7 +3043,7 @@
       "verdict": "Broke even"
     },
     {
-      "title": "Instagram post: Small mistakes, big impact.\n\nThe...",
+      "title": "Small mistakes, big impact.",
       "format": "Static",
       "bucket": "Uncategorized",
       "objective": "Traffic",
@@ -3070,7 +3070,7 @@
       "verdict": "Broke even"
     },
     {
-      "title": "Instagram post: When “curtain ho gaya?” becomes...",
+      "title": "When “curtain ho gaya?” becomes...",
       "format": "Static",
       "bucket": "Uncategorized",
       "objective": "Traffic",
@@ -3097,7 +3097,7 @@
       "verdict": "Profitable"
     },
     {
-      "title": "Instagram post: A beautiful curtain is more than...",
+      "title": "A beautiful curtain is more than...",
       "format": "Static",
       "bucket": "Uncategorized",
       "objective": "Traffic",
@@ -3124,7 +3124,7 @@
       "verdict": "Broke even"
     },
     {
-      "title": "Instagram post: For a designer, every detail...",
+      "title": "For a designer, every detail...",
       "format": "Static",
       "bucket": "Uncategorized",
       "objective": "Traffic",
@@ -3151,7 +3151,7 @@
       "verdict": "Loss-making"
     },
     {
-      "title": "Instagram post: Something exciting is on its way…...",
+      "title": "Something exciting is on its way…...",
       "format": "Static",
       "bucket": "Uncategorized",
       "objective": "Traffic",
@@ -3205,7 +3205,7 @@
       "verdict": "Profitable"
     },
     {
-      "title": "Instagram post: If you notice every pleat, every...",
+      "title": "If you notice every pleat, every...",
       "format": "Static",
       "bucket": "Uncategorized",
       "objective": "Traffic",
@@ -3313,7 +3313,7 @@
       "verdict": "Profitable"
     },
     {
-      "title": "Instagram post: Choosing curtains for a new home...",
+      "title": "Choosing curtains for a new home...",
       "format": "Static",
       "bucket": "Uncategorized",
       "objective": "Traffic",
@@ -3340,7 +3340,7 @@
       "verdict": "Loss-making"
     },
     {
-      "title": "Instagram post: Prepping tor my Nettlix...",
+      "title": "Prepping tor my Nettlix...",
       "format": "Static",
       "bucket": "Uncategorized",
       "objective": "Traffic",
@@ -3421,7 +3421,7 @@
       "verdict": "Profitable"
     },
     {
-      "title": "Instagram post: It started in Mumbai. ✨\nThen came...",
+      "title": "It started in Mumbai. ✨",
       "format": "Static",
       "bucket": "Uncategorized",
       "objective": "Traffic",
